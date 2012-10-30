@@ -1,0 +1,67 @@
+\begin{abstract}
+Cellular networks account for a significant fraction of the cellular network operations costs. We present Low-Carb, a
+practical scheme to decrease electrical energy consumption in
+operational cellular networks by coupling \textit{Base
+Transceiver Station (BTS) power savings} with call
+\textit{hand-off}---two features commonly used by cellular
+operators. Motivated by the practical observation that most
+callers are in the vicinity of multiple BTSs, Low-Carb presents
+and solves an optimization problem, allowing calls to
+\textit{hand-off} from one BTS to another so that \textit{BTS
+power savings} can be applied to a maximal number of BTSs
+throughout the cellular network.
+
+%%Low-Carb formulates an optimization problem that can be solved for specific network data of an operator.
+
+%Using their own network data, a cellular operator can use the Low-Carb formulation to save on t electricity consumption
+
+%Operators often use an equipment feature called \textit{Base Transceiver Station (BTS) power savings} to deactivate some transceivers (TRXs) when the traffic load carried by those TRXs falls below a certain threshold. In this paper, we present Low-Carb to decrease electrical energy consumption in operational cellular networks. Low-Carb couples BTS power savings with call \textit{hand-off}---another feature commonly used by operators---without making a negative impact on the network quality of service. Motivated by the practical observation that most callers are in the vicinity of multiple BTSs, Low-Carb allows calls to hand-off from one BTSs to another so that \textit{BTS power savings} can be applied to a maximal number of BTSs throughout the cellular network.
+
+%below a certain threshold using a feature called \textit{Base Transceiver Station (BTS) power saving}, widely available in deployed equipment. In this paper, we present Low-Carb, which couples BTS power svaing with call \textit{hand-off}, another feature that is commonly used by operators to maximize energy savings in operational cellular networks. Motivated by the practical observation that most callers are in the vicinity of multiple BTSs, the idea is to hand-off some calls from busy BTSs to neighboring ones with low traffic, so that \textit{BTS power savings} can be applied to a maximal number of BTSs throughout the cellular network. We attempt to do this without making a negative impact on the network quality of service.
+
+%Cellular networks account for a significant fraction of the
+%global electricity consumption. Prior work has proposed turning
+%off Base Transceiver Stations (BTSs) to save energy during
+%off-peak hours but wireless service providers are reluctant to
+%take this route for various operational reasons.
+%
+%Providers are, however, much more receptive to deactivating
+%some transceivers (TRXs), and commonly do so when the traffic
+%load carried by those TRXs is negligible (or below a certain
+%threshold). This deactivation is carried out using \textit{BTS
+%power savings}, a feature widely available in currently
+%deployed equipment. We present Low-Carb which combines
+%\textit{BTS power savings} together with \textit{hand-off}, another
+%routinely used feature in cellular networks, to reduce the
+%electrical energy footprint. Low-Carb is based on the practical
+%observation that many callers are within communication range of
+%multiple BTSs. The working principle of Low-Carb is to hand-off
+%calls from one BTS to another, without making a negative impact on the
+%network quality of service, such that the \textit{BTS power
+%savings} can be applied to a maximal number of base stations throughout the
+%cellular network.
+%
+%%Network operators appear to be agreeable for deployment of this
+%%feature. Furthermore, since many callers are within
+%%communication range of multiple BTSs, each of which can have
+%%different traffic conditions, calls may be handed off from BTSs
+%%with higher traffic so as to increase the number of BTSs with
+%%traffic below the power saving threshold. This would result in
+%%increased benefit from the BTS power saving feature. All of
+%%this is possible within the existing cellular network standards
+%%and without a negative effect on network Quality of Service
+%%(QoS).
+
+We use BTS locations and traffic volume data from a large live
+GSM network to evaluate the power savings possible using our
+proposed approach in Low-Carb. Our results indicate that for a
+GSM 1800 network operator with $7000$ sites in an urban setting, a total of up to $35.36$ MWh may be saved annually.
+This is at least 9.8\% better than the energy savings obtained by
+just using BTS power savings alone. Other cellular operators
+can use the Low-Carb formulation with their own network data to
+estimate the electricity savings they may achieve on their
+networks.
+
+%Industry adoption of this approach can thus translate to a huge cut in global electricity consumption.
+\end{abstract}
+

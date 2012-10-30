@@ -1,12 +1,70 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{\texttt{#1}}\fi
 \expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
 \expandafter\ifx\csname href\endcsname\relax
   \def\href#1#2{#2} \def\path#1{#1}\fi
 
+\bibitem{Oh:Comm:2011}
+E.~Oh, B.~Krishnamachari, X.~Liu, Z.~Niu, Toward dynamic energy-efficient
+  operation of cellular network infrastructure, in: IEEE Communications
+  Magazine, 2011.
+
+\bibitem{Louhi:2007:BTSPower:INTELEC}
+J.~T. Louhi, Energy efficiency of modern cellular base stations, in: IEEE
+  INTELEC '07, IEEE, New York, NY, USA, 2007, pp. 475--476.
+
+\bibitem{Peng:2011:BTSSaving:Mobicom}
+C.~Peng, S.-B. Lee, S.~Lu, H.~Luo, H.~Li, Traffic-driven power saving in
+  operational 3g cellular networks, in: ACM MobiCom '11, 2011, pp. 121--132.
+
+\bibitem{He:CellularPower:JN:2012}
+H.~He, J.~Sun, Y.~Wang, Q.~Liu, J.~Yuan, Cluster analysis based switching-off
+  scheme of base stations for energy saving, Journal of Networks 7~(3) (2012)
+  494--501.
+
+\bibitem{Lorincz:BTS-Measure:Sensors:2012}
+J.~Lorincz, T.~Garma, G.~Petrovic, Measurements and modelling of base station
+  power consumption under real traffic loads, Sensors 12~(4) (2012) 4281--4310.
+
+\bibitem{flexibsc}
+N.~S. Networks, {Flexi BSC (BSC14)}, \url{http://bit.ly/QMD8O5} (June 2011).
+
+\bibitem{Tipper:Dimming:Globecom:2010}
+D.~T.~A. Rezgui, Krishnamurthy, P.~Pacharintanaku, Dimming cellular networks,
+  in: IEEE GLOBECOM'10, 2010.
+
+\bibitem{Blume:2010:BLTJ:CellularPower}
+O.~Blume, Energy savings in mobile networks based on adaptation to traffic
+  statistics, Bell Labs Technical Journal 15~(2) (2010) 77--94.
+
+\bibitem{Gerla:1995:MMM:276418.276421}
+M.~Gerla, J.~T.-C. Tsai, Multicluster, mobile, multimedia radio network,
+  Wireless Networks 1~(3) (1995) 255--265.
+
 \bibitem{Chabarek08powerawareness}
 J.~Chabarek, J.~Sommers, P.~Barford, C.~Estan, D.~Tsiang, S.~Wright, Power
   awareness in network design and routing, in: In Proc. IEEE INFOCOM, 2008.
+
+\bibitem{mbakwe:btshybribpower:2011:necec}
+S.~Mbakwe, M.~T. Iqbal, A.~Hsaio, Design of a 1.5kw hybrid wind/photovoltiac
+  power system for a telecoms base station in remote location of benin city
+  nigeria, in: IEEE NECEC, 2011.
+
+\bibitem{ericssonclaim}
+Ericsson, {Vodafone Germany first to launch Ericsson's power-saving feature to
+  reduce energy consumption and cut $CO_2$ emissions},
+  \url{http://bit.ly/Sls1v1} (December 2007).
+
+\bibitem{mobilinksitecount}
+Mobilink, {Mobilink Network}, \url{http://bit.ly/UWXYzB} (September 2012).
+
+\bibitem{ptaannreport}
+{Pakistan Telecommunication Authority}, {Pakistan Telecommunication Authority,
+  2011 Annual Report}, \url{http://bit.ly/S8YtWS} (December 2011).
+
+\bibitem{telenorsitecount}
+Wikipedia, {Telenor Pakistan - Wikipedia}, \url{http://bit.ly/R1Uyqm}
+  (September 2012).
 
 \end{thebibliography}

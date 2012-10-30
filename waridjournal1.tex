@@ -1,6 +1,20 @@
 \documentclass[preprint,12pt]{elsarticle}
 \journal{Future Generation Computer Networks}
+\usepackage{amsmath, amsthm, amssymb,  graphicx}
+\usepackage{subfigure}
+%\usepackage{subfig}
+%\usepackage{cite,citesort}
+%\usepackage{cite}
+\usepackage{multirow}
+\usepackage{epsfig}
+%\usepackage{epstopdf}
+%\usepackage{algorithmic}
 
+\usepackage{url}
+
+% *** SPECIALIZED LIST PACKAGES ***
+%
+\usepackage{algorithmic, algorithm}
 \begin{document}
 
 \begin{frontmatter}
@@ -33,22 +47,18 @@
 %% \address[label1]{<address>}
 %% \address[label2]{<address>}
 
-\author[LUMS]{Muhammad Saqib Ilyas}
+\author[LUMS]{Muhammad Saqib Ilyas\corref{cor1}}
+\cortext[cor1]{Corresponding author}
 \author[LUMS]{Ghufran Baig}
 \author[LUMS]{Zartash Afzal Uzmi}
 \author[LUMS]{Ihsan Ayub Qazi}
 \author[WaridTel]{Bilal Rassool}
-\address[LUMS]{School of Science and Engineering, LUMS, Lahore, Pakistan}
-\address[WaridTel]{Warid Telecom, Lahore, Pakistan}
+\address[LUMS]{\ead{\{saqibm, 000000, zartash, ihsan.qazi\}@lums.edu.pk}School of Science and Engineering, LUMS, Lahore, Pakistan}
+\address[WaridTel]{\ead{bilal.rassool@waridtel.com}Warid Telecom, Lahore, Pakistan}
 
 
 
-\begin{abstract}
-%% Text of abstract
-Here goes
-
-\end{abstract}
-
+\input{Sections/Abstract}
 \begin{keyword}
 %% keywords here, in the form: keyword \sep keyword
 

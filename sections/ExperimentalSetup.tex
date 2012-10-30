@@ -1,2 +1,115 @@
 \section{Experimental Setup}
 \label{sec:expermintalsetup}
+Our dataset is obtained from a cluster of 26 BTSs operated by a large network operator with more than 7000 sites. These sites are spread over a $31.25$ $km^2$ urban terrain. We obtained each site's coverage prediction using a tool popular amongst the operators called Forsk Atoll. With this information, alongwith a caller's location, we can determine the candidate set of BTSs for the corresponding call (the $c_i^j$ parameters). Note that in this work, we do not incorporate user mobility into our model, since we are only interested in instantaneous optimization.
+
+Also available to us are the hourly cumulative traffic, in Erlang, for each of the sites, spanning two consecutive weekdays. The traffic remained remarkably similar across both days for each site. We have, therefore, only used one day's traffic data in our experiments.
+
+Using the above datasets, we conducted a set of experiments mimicking a 24-hour operation of a subset of a cellular network. Each experiment is a discrete event simulation of the arrival and placement of calls. Since our dataset does not include the arrival times and duration of calls, we synthetically generated this information using the assumption of Poisson call arrivals and exponentially distributed call duration with a mean of $180$ seconds~\cite{Gerla:1995:MMM:276418.276421}.
+
+For every hour, the simulator determines the Poisson call arrival rate for each BTS, using Little's Law and the BTSs traffic intensity for that hour. Using the resulting Poisson process, calls are generated such that it is equally likely for a call to be anywhere in the serving BTSs coverage area.
+
+Our simulator tracks the call volume at every BTS on a minute's granularity. This enables us to calculate the power consumption level (in Watts) of the BTS during each minute. Accumulating these numbers over the 24 hour period leads to the daily amount of energy consumed (in kWh) if no optimization is used in the network. Our simulator also monitors each BTSs call volume every minute and places the ones with sufficiently low traffic into power-saving mode. This enables us to calculate the possible energy savings using BTS power-saving feature. In addition, our simulator also periodically determines the instantaneous optimal call placement configuration that minimizes the power consumption level by handing-off some calls, thereby placing a maximal number of BTSs in power-saving mode. This allows us to determine the energy savings possible by combining call hand-offs with BTS power-saving.
+
+%In order to evaluate Low-Carb's effectiveness, we conducted simulation experiments over a set of 26 BTSs spread over a $31.25$ $km^2$ area in an urban setting. These sites belong to a large cellular operator with more than 7000 sites. For each of these sites, we obtained hourly cumulative voice traffic (in Erlangs) for two consecutive weekdays. Since the traffic for both days was remarkably similar on all sites, we have reported results of experiments utilizing just a 24 hour traffic trace.
+%
+%Our experiments consist of a discrete event simulation of call arrivals, placement and then possible hand-offs, driven by real traffic traces. Since the traffic traces do not include call arrival times and distributions, we simulate call arrivals and departures using the assumption of Poisson call arrivals with a mean call duration of $180$ seconds~\cite{Gerla:1995:MMM:276418.276421}. For a given hour, the Poisson call arrival rate is determined for each BTS separately, through Little's Law, by substituting the mean call duration and the corresponding traffic intensity. A new call is equally likely to be anywhere in it's serving BTSs coverage area. For our simulations, we used coverage predictions from a commercial tool Forsk Atoll.
+%
+%Having simulated call arrivals and associations with serving BTSs, our simulator continuously determines the BTSs with sufficiently low traffic and puts them in power-saving mode. Similarly, when the traffic rises above this threshold, the BTSs are brought out of power-saving mode. This allows us to determine the savings achievable using BTS power-saving alone. Furthermore, we periodically determine the instantaneous optimal mapping of the current set of active calls to the BTSs such that a maximal number of BTSs can be put in power-saving mode. Between two successive optimizations, new calls are associated with the BTS from which the caller receives the best signal, with no regard to optimality. The energy saving thus obtained would help us determine the utility of combining call hand-off with BTS power-saving.
+
+The call placement re-optimization may be done at various frequencies. A very aggressive re-optimization regime would keep the network in an optimal state more often than a conservative one, thereby enabling greater energy savings. In order to study the scaling of energy saving with re-optimization frequency, we experimented with a range of intervals between successive optimizations, ranging from a minute to an hour. For a deployment, the re-optimization frequency that can be used would depend on the costs associated with each re-optimization. Let us now consider such costs.
+
+First and foremost, a computational cost is incurred with each optimization. In our case, an optimization run to determine the optimal state over $26$ BTSs required an average running time of about $50$ seconds on a Core i3 laptop with 4 GB of RAM. An optimization requiring $50$ seconds would not be practical to use every minute but may be fine if used less often. For a practical deployment the computational time can be reduced by using a combination of a more powerful machine, distributed optimization and approximation algorithms. 
+
+In addition to the computational overhead, for every unit of energy saved some extra energy may be consumed in the network to perform call hand-offs or entering and leaving BTS power-saving mode. Call hand-offs and TRX (de)activation involve signaling between a Base Station Controller (BSC), BTSs and MSs. The additional energy incurred thus, should be small, because it has been observed that variation in power consumption of network equipment with changes in traffic volume (data or control) is quite small~\cite{Chabarek08powerawareness}. As far as increased power consumption on MSs due to a greater number of call hand-offs is concerned, we opine that it may be negligible because the MSs energy consumption is far outweighed by that of BTSs. %Presently, we do not have quantitative results to back this claim.
+
+%Our dataset consists of the location of
+%26 BTSs in an urban setting, scattered over an area of about $31.25$ $km^2$, from a large operator (with more
+%than 7000 cell sites) and the corresponding hourly cumulative
+%traffic traces for several days. We conducted simulation
+%experiments using a 24 hour subset of the traffic traces only;
+%the traffic data for other days (except for weekends) was
+%remarkably similar. Data about individual call arrival times
+%and durations was not available to us.
+%%because it's collection would have a large storage impact at
+%%the operator's end.
+%Therefore, we synthetically generated the call arrival times
+%and durations.
+%
+%%assuming Poisson arrivals and a negative-exponential
+%%distribution of call durations with a mean value of $180$
+%%seconds~\cite{Gerla:1995:MMM:276418.276421}. The Poisson
+%%arrival rate for each hour is obtained from Little's law by
+%%using the corresponding traffic volume and average call
+%%duration.
+%
+%We developed a discrete event simulator in Matlab that
+%generates calls arrivals randomly according to Poisson arrival
+%process while setting call duration according to an exponential
+%distribution with mean of $180$
+%seconds~\cite{Gerla:1995:MMM:276418.276421}. The Poisson
+%arrival rate for each hour is obtained from Little's law by
+%using the corresponding traffic volume and average call
+%duration. Each call is at first associated with the BTS from
+%which it receives the strongest signal. This establishes the
+%benchmark for evaluation of our proposed scheme. Within the
+%simulation, we periodically invoked the CPLEX optimizer and
+%obtained the instantaneous mapping between calls and their
+%corresponding serving BTSs. We experimented with varying
+%frequency of re-optimization ranging from very aggressive
+%(every minute!) to conservative with once per hour
+%re-optimization. For each re-optimization interval, we
+%determined the savings in energy consumption compared to the
+%benchmark.
+%
+%To determine the possible set of serving BTSs for a given call,
+%we have used a simple heuristic of a circular coverage area
+%around a cell site approximated from the coverage predictions
+%obtained through a commercial software, Forsk Atoll. Our
+%procedure only requires availability of a 0-1 matrix
+%representing this information and in practice a more accurate
+%estimation technique may be plugged into our framework without
+%requiring any changes.
+
+%*** The following should change ***
+% TODO to-do %
+
+% Should we keep everything in the following para? or anything at all? Perhaps, the geographical size, yes... other info, your call Saqib! -Zartash
+
+%BTSs come in different shapes and sizes. To obtain results that are applicable to most operators, we used three
+%different models for BTS power consumption that we found in
+%recent literature. These models are described next.
+
+\subsection{Site Characteristics}
+\label{subsec:sitetypes} All sites in our dataset had three sectors, each equipped with 6 TRXs, for a maximum of %In the GSM standard, each TRXs signal may be used by as many as $8$ voice/control channels thanks to Time Domain Multiple Access (TDMA). This means that each site is equipped with $3\times6\times8 = 144$ channels of which four in each sector were reserved for control and broadcast channels, resulting in each site having a traffic capacity ($t_{max}$) of $132$ simultaneous voice calls. 
+%Each site is capable of handling 
+132 simultaneous voice calls\footnote[1]{Each TRX's frequency is shared in time-domain  by 8 calls for  a total of $3\times6\times8=144$ channels. Four channels in each sector were reserved for control and broadcast purposes.}. The GSM standard includes a provision for half-rate calls, which enables handling greater traffic at the expense of reduced voice quality by allowing a single voice channel to be shared amongst two calls, each using a half-rate codec. In this paper, we only shuffle full-rate calls around, which may be, in reality, two half-rate calls. We do not foresee any significant error arising from using this convention.
+
+We consider a scaling down from a $``6+6+6"$ site to a $``2+2+2"$ site, which means that $\delta$ should be strictly less than $t_{max}/3$ to avoid quick oscillations into and out of BTS power-saving mode due to short-term traffic variations. %when a BTS goes to low-power mode, it has some residual capacity on the remaining TRXs and unnecessary oscillations between low-power and high-power model are avoided. 
+We have arbitrarily set $\delta$ equal to $\lceil t_{max}/3\rceil -5$, because $5$ seemed to be a good enough number compared to a sector's overall capacity and the typical utilization of a site in our datasets.
+
+The BTS power consumption model parameters may vary from one BTS model to another. In this paper, we use three different sets of model parameters as listed in table~\ref{tab:models}. We now describe the sources and methods from which we obtained these models.
+\subsubsection{Model 1}
+\label{subsubsec:model1}For the first model, we have used $1.5kW$ as the maximum power consumption~\cite{mbakwe:btshybribpower:2011:necec}, a $20W$ per TRX saving when scaling the BTS down~\cite{flexibsc} and a $5\%$ swing in power consumption between no-load and full-load~\cite{Peng:2011:BTSSaving:Mobicom}.
+
+\subsubsection{Model 2}
+\label{subsubsec:model2} Lorincz et. al reported the single sector DC power consumption for a GSM 900 BTS~\cite{Lorincz:BTS-Measure:Sensors:2012}. The sector under consideration had 7 TRXs, as opposed to 6 TRXs in our case. To approximate the DC power consumption for a site with 3 sectors, each with 6 TRXs, we scaled the power consumption by a factor of $3\times6/7$. The DC power consumption does not include the AC power consumed in the power supply units and in air-conditioning. We must, therefore, also compensate for those, to obtain the overall site power consumption. Power supply unit load is negligible compared to air-conditioning, which has a typical power consumption of 1 kW~\cite{mbakwe:btshybribpower:2011:necec}. We applied this scaling and addition to the minimum reported DC power consumption for the GSM 900 site to obtain an approximate value of $P_1$ for a site comparable to ours. Similarly, we used the maximum reported DC power consumption and applied the scaling and AC load correction to approximate the value of $P_2$. Furthermore, the authors measured a drop of $50W$ in power consumption when a TRX is disable, which gives us the value of $\gamma$ as listed in table~\ref{tab:models}.
+
+%For the second model, we picked the measurements for the GSM 900 BTS in~\cite{Lorincz:BTS-Measure:Sensors:2012}. The minimum and maximum reported power consumption for a sector with $7$ TRXs at this BTS were $517.6W$ and $1012.5W$ respectively. For a sector with $6$ TRXs, as in our case, the minimum and maximum power consumption would be (roughly) $467.6W$ and $962.5W$ respectively. For a site with three such sectors, the overall minimum and maximum power consumption would be three folds, i.e., $1401.8W$ and $2887.5W$ respectively. This is the DC power consumption as reported in~\cite{Lorincz:BTS-Measure:Sensors:2012}, which does not include the power consumed in air-conditioning and power supply units. The latter consume negligible power as compared to the former, which is typically $1kW$~\cite{mbakwe:btshybribpower:2011:necec}. Therefore, under this model, we consider a site's minimum and maximum power consumption as $2401.8W$ and $3887.5W$ respectively. Also recall, that in case of the GSM 900 BTS,~\cite{Lorincz:BTS-Measure:Sensors:2012} reports a cut of $50W$ in power consumption when a TRX is deactivated.
+
+\subsubsection{Model 3}
+\label{subsubsec:model3}Using the same method as for model 2 in~\ref{subsubsec:model2}, we derived the values for $P_1$ and $P_2$ using the measurements for the GSM 1800 BTS in~\cite{Lorincz:BTS-Measure:Sensors:2012}. As for the value of $\gamma$, the paper reported a $100W$ cut in power consumption when deactivating a single TRX. The parameter values for this model are given in Table~\ref{tab:models}
+
+\begin{table}
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+Parameter & \multicolumn{3}{|c|} {Value} \\
+\cline{2-4} \ & Model 1 & Model 2 & Model 3 \\
+\hline $P_1$ & 1425 & 2401.8 & 2341.5 \\
+\hline $P_2$ & 1500 & 3887.5 & 2973.9 \\
+\hline $\gamma$ & 20 & 50 & 100 \\
+\hline
+\end{tabular}
+\caption{BTS model parameter values}
+\label{tab:models}
+\end{table}

@@ -1,7 +1,9 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=latex 2012.10.30)  30 OCT 2012 12:21
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=latex 2012.9.23)  31 OCT 2012 10:11
 entering extended mode
 **waridjournal1.tex
-(C:\Users\saqibm\Documents\GitHub\WaridJournal2\waridjournal1.tex
+
+("C:\Documents and Settings\Administrator\My Documents\GitHub\WaridJournal2\war
+idjournal1.tex"
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -13,7 +15,9 @@ an, ngerman-x-2009-06-19, nynorsk, oriya, panjabi, pinyin, polish, portuguese,
 romanian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swis
 sgerman, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, u
 senglishmax, welsh, loaded.
-(C:\Users\saqibm\Documents\GitHub\WaridJournal2\elsarticle.cls
+
+("C:\Documents and Settings\Administrator\My Documents\GitHub\WaridJournal2\els
+article.cls"
 Document Class: elsarticle 2009/09/17, 1.20b: Elsevier Ltd
 \@bls=\dimen102
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\article.cls"
@@ -87,8 +91,10 @@ File: upsy.fd 2001/06/04 font definitions for U/psy.
 \@sep=\skip43
 \@@sep=\skip44
 
-(C:\Users\saqibm\Documents\GitHub\WaridJournal2\waridjournal1.spl)
-(C:\Users\saqibm\AppData\Roaming\MiKTeX\2.9\tex\latex\natbib\natbib.sty
+("C:\Documents and Settings\Administrator\My Documents\GitHub\WaridJournal2\war
+idjournal1.spl")
+("C:\Documents and Settings\Administrator\Application Data\MiKTeX\2.9\tex\latex
+\natbib\natbib.sty"
 Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibhang=\skip45
 \bibsep=\skip46
@@ -179,7 +185,8 @@ Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 96.
 ))
-(C:\Users\saqibm\AppData\Roaming\MiKTeX\2.9\tex\latex\subfigure\subfigure.sty
+("C:\Documents and Settings\Administrator\Application Data\MiKTeX\2.9\tex\latex
+\subfigure\subfigure.sty"
 Package: subfigure 2002/07/30 v2.1.4 subfigure package
 \subfigtopskip=\skip53
 \subfigcapskip=\skip54
@@ -195,10 +202,13 @@ Package: subfigure 2002/07/30 v2.1.4 subfigure package
 ****************************************
 * Local config file subfigure.cfg used *
 ****************************************
-(C:\Users\saqibm\AppData\Roaming\MiKTeX\2.9\tex\latex\subfigure\subfigure.cfg)
+
+("C:\Documents and Settings\Administrator\Application Data\MiKTeX\2.9\tex\latex
+\subfigure\subfigure.cfg")
 \subfig@top=\skip57
 \subfig@bottom=\skip58
-) ("C:\Program Files\MiKTeX 2.9\tex\latex\multirow\multirow.sty"
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\multirow\multirow.sty"
 \bigstrutjot=\dimen121
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\epsfig.sty"
@@ -210,10 +220,11 @@ Package: epsfig 1999/02/16 v1.7a (e)psfig emulation (SPQR)
 \Urlmuskip=\muskip11
 Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
 )
-(C:\Users\saqibm\AppData\Roaming\MiKTeX\2.9\tex\latex\algorithms\algorithmic.st
-y
+("C:\Documents and Settings\Administrator\Application Data\MiKTeX\2.9\tex\latex
+\algorithms\algorithmic.sty"
 Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
- ("C:\Program Files\MiKTeX 2.9\tex\latex\base\ifthen.sty"
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\ifthen.sty"
 Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
 )
 \c@ALC@unique=\count110
@@ -223,7 +234,8 @@ Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
 \ALC@tlm=\skip59
 \algorithmicindent=\skip60
 )
-(C:\Users\saqibm\AppData\Roaming\MiKTeX\2.9\tex\latex\algorithms\algorithm.sty
+("C:\Documents and Settings\Administrator\Application Data\MiKTeX\2.9\tex\latex
+\algorithms\algorithm.sty"
 Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
 nment
 
@@ -238,7 +250,8 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@every@algorithm=\toks30
 \c@algorithm=\count115
 )
-(C:\Users\saqibm\Documents\GitHub\WaridJournal2\waridjournal1.aux)
+("C:\Documents and Settings\Administrator\My Documents\GitHub\WaridJournal2\war
+idjournal1.aux")
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
 LaTeX Font Info:    ... okay on input line 18.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 18.
@@ -252,10 +265,10 @@ LaTeX Font Info:    ... okay on input line 18.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
 LaTeX Font Info:    ... okay on input line 18.
 
-(C:\Users\saqibm\Documents\GitHub\WaridJournal2\Sections/Abstract.tex
+("C:\Documents and Settings\Administrator\My Documents\GitHub\WaridJournal2\Sec
+tions/Abstract.tex"
 LaTeX Font Info:    Try loading font information for U+msa on input line 58.
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 58.
@@ -263,18 +276,19 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 58.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 ))
-(C:\Users\saqibm\Documents\GitHub\WaridJournal2\Sections/Introduction.tex
-[1
+("C:\Documents and Settings\Administrator\My Documents\GitHub\WaridJournal2\Sec
+tions/Introduction.tex" [1
 
 
-]
+] [2]
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 53.
- ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 53.
- [2] [3]
+ [3]
 File: figures/coveragecdf.eps Graphic file (type eps)
 
 <figures/coveragecdf.eps>
@@ -284,56 +298,71 @@ File: figures/traffic.eps Graphic file (type eps)
 LaTeX Warning: Reference `sec:experiments' on page 4 undefined on input line 13
 4.
 
-) (C:\Users\saqibm\Documents\GitHub\WaridJournal2\Sections/RelatedWork.tex)
-(C:\Users\saqibm\Documents\GitHub\WaridJournal2\Sections/Formulation.tex
-[4]
+)
+("C:\Documents and Settings\Administrator\My Documents\GitHub\WaridJournal2\Sec
+tions/RelatedWork.tex")
+("C:\Documents and Settings\Administrator\My Documents\GitHub\WaridJournal2\Sec
+tions/Formulation.tex" [4]
 File: figures/powermodel.eps Graphic file (type eps)
- <figures/powermodel.eps> [5])
-(C:\Users\saqibm\Documents\GitHub\WaridJournal2\Sections/ExperimentalSetup.tex
+ <figures/powermodel.eps> [5]
+File: figures/powermodel2.eps Graphic file (type eps)
+
+<figures/powermodel2.eps>
+
+LaTeX Warning: Reference `fig:powerm odel1' on page 6 undefined on input line 4
+5.
+
 [6] [7] [8])
-(C:\Users\saqibm\Documents\GitHub\WaridJournal2\Sections/Results.tex
+("C:\Documents and Settings\Administrator\My Documents\GitHub\WaridJournal2\Sec
+tions/ExperimentalSetup.tex" [9] [10] [11])
+("C:\Documents and Settings\Administrator\My Documents\GitHub\WaridJournal2\Sec
+tions/Results.tex"
 Overfull \hbox (2.90286pt too wide) in paragraph at lines 3--4
 [][]\OT1/cmr/m/n/12 The fol-low-ing re-sults were ob-tained through sim-u-la-ti
 on ex-per-i-ments driven
  []
 
-[9]
+[12]
 File: figures/percent.savings.powersaving.eps Graphic file (type eps)
- <figures/percent.savings.powersaving.eps> [10]
+ <figures/percent.savings.powersaving.eps> [13]
 File: figures/e.savings.powersaving.eps Graphic file (type eps)
 
-<figures/e.savings.powersaving.eps> [11])
-(C:\Users\saqibm\Documents\GitHub\WaridJournal2\Sections/Conclusions.tex)
-[12] (C:\Users\saqibm\Documents\GitHub\WaridJournal2\waridjournal1.bbl
+<figures/e.savings.powersaving.eps> [14])
+("C:\Documents and Settings\Administrator\My Documents\GitHub\WaridJournal2\Sec
+tions/Conclusions.tex")
+("C:\Documents and Settings\Administrator\My Documents\GitHub\WaridJournal2\war
+idjournal1.bbl" [15]
 Underfull \hbox (badness 1377) in paragraph at lines 50--53
 [][]\OT1/cmr/m/n/12 S. Mbakwe, M. T. Iqbal, A. Hsaio, De-sign of a 1.5kw hy-bri
 d
  []
 
-[13]
+
 Underfull \hbox (badness 2856) in paragraph at lines 60--61
 [][]\OT1/cmr/m/n/12 Mobilink, Mo-bilink Net-work, $\OT1/cmtt/m/n/12 http : / / 
 bit . ly / UWXYzB$ \OT1/cmr/m/n/12 (Septem-ber
  []
 
-
+[16]
 Underfull \hbox (badness 1163) in paragraph at lines 67--69
 [][]\OT1/cmr/m/n/12 Wikipedia, Te-lenor Pak-istan - Wikipedia, $\OT1/cmtt/m/n/1
 2 http : / / bit . ly / R1Uyqm$
  []
 
-) [14] (C:\Users\saqibm\Documents\GitHub\WaridJournal2\waridjournal1.aux)
+) [17]
+("C:\Documents and Settings\Administrator\My Documents\GitHub\WaridJournal2\war
+idjournal1.aux")
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 2747 strings out of 494046
- 34872 string characters out of 3148406
+ 2754 strings out of 494046
+ 36090 string characters out of 3148332
  91224 words of memory out of 3000000
- 5961 multiletter control sequences out of 15000+200000
+ 5967 multiletter control sequences out of 15000+200000
  13360 words of font info for 51 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
  32i,10n,30p,1306b,311s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on waridjournal1.dvi (14 pages, 47940 bytes).
+Output written on waridjournal1.dvi (17 pages, 58244 bytes).

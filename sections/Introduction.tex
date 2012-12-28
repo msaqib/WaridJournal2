@@ -1,15 +1,14 @@
 \section{Introduction}
 \label{sec:intro} 
+We rely more and more on large scale distributed systems every day. Examples of such systems include the Internet, scientific computation clusters, weather forecasting systems and cellular networks. The energy efficiency of most of these systems is obscenely bad~\cite{Jeyarani:2012:DIA:2148243.2148374,AlDaoud2012745,5621969}. For instance, the servers which are present at the core of such systems consume as much as 60\% of their peak power consumption when operating under no-load~\cite{10.1109/MC.2007.443}. Challenges of global warming as well as rising electricity prices have placed significant emphasis upon research to improve the energy efficiency of large scale distributed systems. In this paper, we focus on cellular networks, but the techniques formulated apply to many other systems as well.
+
 Cellular networks consume several tens of TWhs of electrical energy
-every year worldwide~\cite{Oh:Comm:2011}. This not only results
-in significant operational expenditure, which is increasing with
-rising electricity and fuel prices, but is also a source of concern
-for ecological reasons. The major sink of power in a cellular network are Base
+every year worldwide~\cite{Oh:Comm:2011}. The major sink of power in a cellular network are Base
 Transceiver Stations (BTSs), accounting for 50\% to 90\% of
 the total power
-consumption~\cite{Louhi:2007:BTSPower:INTELEC,Oh:Comm:2011}.
+consumption~\cite{Louhi:2007:BTSPower:INTELEC,Oh:Comm:2011}. Our focus, therefore, in the present work is on reducing the electricity consumption in the BTSs.
 
-Global System for Mobile Communication (GSM) cellular networks are quite widely deployed, especially in the developing world. In this paper, we focus specifically on GSM networks, although the techniques proposed are applicable to other cellular network technologies as well. In a GSM network, every BTS is equipped with several transceivers (TRXs), each of
+Global System for Mobile Communication (GSM) cellular networks are quite widely deployed, especially in the developing world. In the present work, we focused on GSM cellular networks alone, but most of the results and techniques should be applicable with few changes to other cellular communication technologies as well. In a GSM network, every BTS is equipped with several transceivers (TRXs), each of
 which is allocated a single frequency band for transmission and
 reception of radio signals. Each TRX further uses time
 multiplexing to handle up to 8 full-rate voice calls over its
@@ -53,7 +52,7 @@ citing three reasons:
 \item Power cycling of entire base stations is expected to
     reduce equipment life time.
 \item Turning off some BTSs may require an increased uplink
-    power which may not be handled by many low-cost/power-limited obile
+    power which may not be handled by many low-cost/power-limited mobile
     stations (MSs). This raises a risk of customer churn and is
     not acceptable to the operators in cut-throat
     competition prevalent in today's market.
@@ -64,9 +63,7 @@ citing three reasons:
 
 Our conversations with
 wireless providers reveal that during low traffic periods, they often use a feature available in most vendor's equipment that power-gates TRX circuits at locations that
-serve very few customers. Huawei calls this feature \textit{TRX shutdown} while Ericsson calls it \textit{BTS power saving}. We use the latter term generically in this paper.
-
-Since BTS power consumption has a traffic-independent
+serve very few customers. Huawei calls this feature \textit{TRX shutdown} while Ericsson calls it \textit{BTS power saving}. We use the latter term generically in this paper. Since BTS power consumption has a traffic-independent
 component~\cite{Peng:2011:BTSSaving:Mobicom} that depends,
 among other factors, on the number of active TRXs, deactivating
 TRXs reduces the BTS power consumption. For instance, turning
@@ -79,6 +76,19 @@ TRXs will result in a saving of
 240W to 1200W on a single site. The decision to use \textit{BTS
 power saving} feature is generally local to the BTS without any
 coordinated effort at the network level.
+
+\begin{figure}
+\includegraphics[width=1\textwidth]{figures/illustrationall.eps}
+\caption{A toy example to illustrate the main idea behind Low-Carb. Three BTSs (A, B and C) are shown alongwith eight active calls. The serving BTS for each call is shown using a dashed line. A solid completely filled bar alongside a BTS symbol indicates that it is running in the default configuration where all TRXs are enabled. A BTS in power-saving mode is indicated with a half-filled bar next to it. Assume that power-saving mode may be enabled at a BTS if it has less than three active calls. (a) shows the default configuration where power-saving mode is not used. (b) shows the approach currently used by operators whereby power-saving mode is enabled on a BTS with low-traffic. (c) shows our proposed approach, whereby calls may be handed-off to nearby BTSs, thus maximizing the number of BTSs in power-saving mode.}
+\label{fig:illustrationall}
+\end{figure}
+
+
+Let us illustrate the main idea behind the energy-saving approach proposed in this paper with the help of the illustration in Figure~\ref{fig:illusgtrationall}. The figure shows three nearby BTSs collectively serving eight active calls. The association of call to the serving BTS is indicated by means of a dashed line, while the boundary of the potential service area of a BTS is indicated by means of a dashed circle around it. Be default, each call is served by the BTS from which the mobile station receives the strongest signal. In this example, we assume that the call handling capacity of each BTS is six simultaneous calls. Furthermore, we assume that the power-saving threshold is three calls, i.e., if a BTS is serving less than three calls, it may be put into power-saving mode. In Figure~\ref{fig:illustrationall}, a BTS in it's default configuration, i.e., all TRXs enabled is indicated with a solid bar next to the BTS symbol. Meanwhile, a BTS in power-saving mode is shown by a half-filled bar next to the BTS symbol.
+
+
+In Figure~\ref{fig:illustrationall} note that calls 1 through 6 may only be served through one BTS, while call 7 may be served either by BTS A or C and call 8 may be served either by BTS B or C. Figure~\ref{fig:illustrationall} (a) shows the default deployment where the default call routing and no power-saving is used. Since BTS C is serving only two calls, it may be placed in power-saving mode. Figure~\ref{fig:illustrationall} (b) shows this state, which indicates the current practice in operational cellular networks, whereby BTS C is put into power-saving mode because it's current call volume is below the power-saving threshold. However, this is not the optimal call routing strategy in terms of energy-savings. We may handoff calls 7 and 8 to BTS C, thereby reducing the call volume at both BTS A and B below the power-saving threshold. This results in the energy-optimal call routing strategy, proposed in this paper, shown in Figure~\ref{fig:illustrationall} (c). 
+
 
 This paper presents Low-Carb which combines the \textit{BTS
 power saving} with \textit{hand-off}, another commonly used
@@ -102,10 +112,10 @@ serving BTS. This fact alone, however, would not result in additional energy sav
 \begin{figure}
 \centering
 \subfigure[]{
-\includegraphics[width=0.23\textwidth]{figures/coveragecdf.eps}
+\includegraphics[width=0.48\textwidth]{figures/coveragecdf.eps}
 \label{fig:btscdf}
 }
-\subfigure[]{\includegraphics[width=0.23\textwidth]{figures/traffic.eps}
+\subfigure[]{\includegraphics[width=0.48\textwidth]{figures/traffic.eps}
 \label{fig:traffic}
 }
 \caption{Characteristics of our dataset: (a) Empirical CDF of the number of potential serving BTSs for a call in our dataset (large metropolitan area), (b) Normalized traffic intensity at two neighboring sites in our dataset} 
@@ -131,7 +141,7 @@ and works within the GSM specifications.
 The rest of the paper is structured as follows. The formulation
 of Low-Carb optimization problem is given in
 section~\ref{sec:formulation}. Experimental setup and the
-results are presented in sections~\ref{sec:experiments}
+results are presented in sections~\ref{sec:expermintalsetup}
 and~\ref{sec:results}, respectively. In
 section~\ref{sec:conclusions}, we draw the conclusions
 highlighting the power saving strategy for providers.

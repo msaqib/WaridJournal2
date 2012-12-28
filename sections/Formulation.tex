@@ -11,11 +11,8 @@ maximum number of calls that can be handled.
 
 Let $\delta$ be the traffic threshold at which the \textit{BTS
 power savings} is applied (i.e., when BTS deactivates some TRXs
-moving into low-power mode). Since all TRXs are identical, the
-per call increase in power consumption, and hence the slope of
-the power consumption profile in Fig.~\ref{fig:powermodel1},
-remains the same whether or not some TRXs are deactivated. As
-also indicated in Fig.~\ref{fig:powermodel1}, the no-load power
+moving into low-power mode). If half of the TRXs are deactivated, $t_{max}$ drops by one half, too. At the same time, $P_2$ and $P_1$ also drop to by one half. The slope of the aforementioned linear power consumption profile for the BTS, therefore, is the same irrespective of the number of TRXs that are online. The power consumption profile wiht or without the BTS power-savings is shown in Figure~\ref{fig:powermodel1}. As
+indicated in Figure~\ref{fig:powermodel1}, the no-load power
 consumption drops to $P_1-\gamma$ in the low-power mode, where
 $\gamma$ is a constant that depends on the equipment type and
 the number of TRXs deactivated.
@@ -23,7 +20,7 @@ the number of TRXs deactivated.
 If $x$ is an indicator variable which is 1 when \textit{BTS
 power savings} is applied, and $0$ otherwise, then the BTS
 power consumption may be given by $P_1+l(P_2-P_1)/t_{max} -
-(1-x)\gamma$, also indicated in Fig.~\ref{fig:powermodel1} by
+(1-x)\gamma$, also indicated in Figure~\ref{fig:powermodel1} by
 the piecewise linear solid line.
 
 \begin{figure}
@@ -33,16 +30,16 @@ the piecewise linear solid line.
 \label{fig:powermodel1}
 \end{figure}
 
-The granularity of TRX deactivation can be increased to give the power consumption model in Fig.~\ref{fig:powermodel2}. If the traffic is above threshold $\delta_2$, the BTS operates in the default high-power mode. When the traffic drops below threshold $\delta_2$, two TRXs are power-gated, and the BTS enter the medium-power mode (4+4+4 configuration). When the traffic falls below threshold $\delta_1$, two more TRXs are power-gated and the BTS enters the low-power mode.
+The granularity of TRX deactivation can be increased to give the power consumption model in Figure~\ref{fig:powermodel2}. If the traffic is above threshold $\delta_2$, the BTS operates in the default high-power mode. When the traffic drops below threshold $\delta_2$, two TRXs are power-gated, and the BTS enter the medium-power mode (4+4+4 configuration). When the traffic falls below threshold $\delta_1$, two more TRXs are power-gated and the BTS enters the low-power mode. The drop in power consumption for each of the deactivation steps is $\gamma/2$, because compared to Figure~\ref{fig:powermodel1}, half as many TRXs are deactivated in each step.
 
 \begin{figure}
 \centering
-\includegraphics[width=0.46\textwidth]{figures/powermodel2.eps}
+\includegraphics[width=0.46\textwidth]{figures/powermodel2-1.eps}
 \caption{BTS power consumption model. BTS power saving is applied in a more granular way.}
 \label{fig:powermodel2}
 \end{figure}
 
-The less granular model of Fig.~\ref{fig:powermodel1} offers energy saving potential only when traffic falls to about one-third of the BTS capacity. The more granular model of Fig.~\ref{fig:powermodel2}, on the other hand offers energy savings in two steps, with the first one kicking in as soon as the traffic falls below approximately two-third of the BTS traffic capacity. Therefore, the more granular model (Fig.~\ref{fig:powermodel2}) should be more attractive for energy savings than the less granular one (Fig.~\ref{fig:powerm odel1}).
+The less granular model of Figure~\ref{fig:powermodel1} offers energy saving potential only when traffic falls to about one-third of the BTS capacity. The more granular model of Figure~\ref{fig:powermodel2}, on the other hand offers energy savings in two steps, with the first one kicking in as soon as the traffic falls below approximately two-third of the BTS traffic capacity. Therefore, the more granular model (Figure~\ref{fig:powermodel2}) should be more attractive for energy savings than the less granular one (Figure~\ref{fig:powermodel1}).
 
 \subsection{Multi-BTS Cellular Setting}
 Consider an area with $n$ active callers being served by $m$ BTSs.
@@ -87,7 +84,7 @@ value for the decision variable $x_j$. The fourth constraint is the capacity con
 constraint is the binary value constraint on the decision
 variables.
 
-For the three-step BTS power-saving model of Fig.~\ref{fig:powermodel2}, the optimization problem can be stated as:
+For the three-step BTS power-saving model of Figure~\ref{fig:powermodel2}, the optimization problem can be stated as:
 \begin{align}
 \textit{minimize} \quad \sum_{j=1}^{m} \left[
 P_1+\sum_{i=1}^{n}\frac{w_{i,j}(P_2-P_1)}{t_{max}}-\frac{(1-x_j)\gamma}{2}-\frac{(1-y_j)\gamma}{2}

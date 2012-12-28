@@ -5,6 +5,41 @@
 \expandafter\ifx\csname href\endcsname\relax
   \def\href#1#2{#2} \def\path#1{#1}\fi
 
+\bibitem{Jeyarani:2012:DIA:2148243.2148374}
+R.~Jeyarani, N.~Nagaveni, R.~Vasanth~Ram,
+  \href{http://dx.doi.org/10.1016/j.future.2011.06.002}{Design and
+  implementation of adaptive power-aware virtual machine provisioner (apa-vmp)
+  using swarm intelligence}, Future Gener. Comput. Syst. 28~(5) (2012)
+  811--821.
+\newblock \href {http://dx.doi.org/10.1016/j.future.2011.06.002}
+  {\path{doi:10.1016/j.future.2011.06.002}}.
+\newline\urlprefix\url{http://dx.doi.org/10.1016/j.future.2011.06.002}
+
+\bibitem{AlDaoud2012745}
+H.~Al-Daoud, I.~Al-Azzoni, D.~G. Down,
+  \href{http://www.sciencedirect.com/science/article/pii/S0167739X11000525}{Power-aware
+  linear programming based scheduling for heterogeneous computer clusters},
+  Future Generation Computer Systems 28~(5) (2012) 745 -- 754,
+  <ce:title>Special Section: Energy efficiency in large-scale distributed
+  systems</ce:title>.
+\newblock \href {http://dx.doi.org/10.1016/j.future.2011.04.001}
+  {\path{doi:10.1016/j.future.2011.04.001}}.
+\newline\urlprefix\url{http://www.sciencedirect.com/science/article/pii/S0167739X11000525}
+
+\bibitem{5621969}
+L.~Correia, D.~Zeller, O.~Blume, D.~Ferling, Y.~Jading, I.~Go´dor, G.~Auer,
+  L.~Van~der Perre, Challenges and enabling technologies for energy aware
+  mobile radio networks, Communications Magazine, IEEE 48~(11) (2010) 66 --72.
+\newblock \href {http://dx.doi.org/10.1109/MCOM.2010.5621969}
+  {\path{doi:10.1109/MCOM.2010.5621969}}.
+
+\bibitem{10.1109/MC.2007.443}
+L.~A. Barroso, U.~Holzle, The case for energy-proportional computing, Computer
+  40 (2007) 33--37.
+\newblock \href
+  {http://dx.doi.org/http://doi.ieeecomputersociety.org/10.1109/MC.2007.443}
+  {\path{doi:http://doi.ieeecomputersociety.org/10.1109/MC.2007.443}}.
+
 \bibitem{Oh:Comm:2011}
 E.~Oh, B.~Krishnamachari, X.~Liu, Z.~Niu, Toward dynamic energy-efficient
   operation of cellular network infrastructure, in: IEEE Communications

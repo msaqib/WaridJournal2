@@ -1,2 +1,17 @@
 \section{Related Work}
-\label{sec:related}
+\label{sec:related} 
+The problem that we investigated in this work falls into the broad category of resource assignment problems. This problem finds applications in many different domains. Some examples of prior work in other domains on similar problems include virtual machine provisioning in data centers~\cite{Jeyarani:2012:DIA:2148243.2148374}, scheduling in compute clusters~\cite{AlDaoud2012745}. Our proposed technique and heuristics may also be applied to such similar problems in other domains.
+
+Our focus in the present work is to develop techniques that are practically usable in operational networks instead of taking a clean-slate approach. In this sense, it differs from much prior work in energy efficiency in cellular networks. A key benefit of this approach is that it 
+does not require any additional hardware
+and works within the GSM specifications. Our
+work is very similar in spirit to the concept of
+\textit{frequency dimming}
+in~\cite{Tipper:Dimming:Globecom:2010} albeit at a different
+level of abstraction. A similar approach is also proposed
+in~\cite{Blume:2010:BLTJ:CellularPower} with some rough
+estimates of expected savings. We, on the other hand, use site
+locations and traffic traces from a large cellular network with
+more than 13 million subscribers to run a simulation study
+assessing the benefits of dynamic equipment scaling coupled
+with call hand-offs. 

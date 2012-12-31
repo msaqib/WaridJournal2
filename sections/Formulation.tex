@@ -30,7 +30,7 @@ the piecewise linear solid line.
 \label{fig:powermodel1}
 \end{figure}
 
-The granularity of TRX deactivation can be increased to give the power consumption model in Figure~\ref{fig:powermodel2}. If the traffic is above threshold $\delta_2$, the BTS operates in the default high-power mode. When the traffic drops below threshold $\delta_2$, two TRXs are power-gated, and the BTS enter the medium-power mode (4+4+4 configuration). When the traffic falls below threshold $\delta_1$, two more TRXs are power-gated and the BTS enters the low-power mode. The drop in power consumption for each of the deactivation steps is $\gamma/2$, because compared to Figure~\ref{fig:powermodel1}, half as many TRXs are deactivated in each step.
+The BTS equipment may be configurable in more than two-states, depending on the available granularity of TRX deactivation. for instance, a three-state BTS power consumption model is shown in Figure~\ref{fig:powermodel2}. If the traffic is above threshold $\delta_2$, the BTS operates in the default high-power mode. When the traffic drops below threshold $\delta_2$, two TRXs per sector are power-gated, and the BTS enter the medium-power mode (4+4+4 configuration). When the traffic falls below threshold $\delta_1$, two more TRXs are power-gated and the BTS enters the low-power mode. The drop in power consumption for each of the deactivation steps is $\gamma/2$, because compared to Figure~\ref{fig:powermodel1}, half as many TRXs are deactivated in each step.
 
 \begin{figure}
 \centering
@@ -66,8 +66,6 @@ subject to the following constraints:
 & \sum_{j=1}^m w_{i,j} = 1 \qquad \forall i \\
 & w_{i,j} \leq c_{i,j} \qquad \forall i, j \\
 & \sum_{i=1}^nw_{i,j}-\delta \leq Mx_j \qquad \forall j%\\
-\end{align}
-\begin{align}
 & \sum_{i=1}^n w_{i,j} \le t_{max} \qquad \forall i \\
 %\end{align}
 %\begin{align}
@@ -84,10 +82,21 @@ value for the decision variable $x_j$. The fourth constraint is the capacity con
 constraint is the binary value constraint on the decision
 variables.
 
+Note that the first term in the objective function is a constant and may be dropped from the optimization. Similarly, the second term ($\frac{P_2-P_1}{t_{max}}\sum\limits_{j=1}^{m}\sum\limits_{i=1}^{n}w_{i,j}$) is also a constant, i.e., $\frac{n(P_2-P_1)}{t_{max}}$ because of the first constraint, and hence may be omitted from the optimization. Similarly, multiplication by a scalar does not affect the optimal so $\gamma$ may also be omitted from the optimization. This leaves the objective function as:
+\begin{align}
+\textit{minimize} \quad \sum_{j=1}^{m} -(1-x_j)
+\end{align}
+This may alternatively be specified as:
+\begin{align}
+\textit{maximize} \quad \sum_{j=1}^{m} x_j
+\end{align}
+which makes intuitive sense, too, as maximizing the number of BTSs in power-saving mode would minimize the energy consumption.
+
+
 For the three-step BTS power-saving model of Figure~\ref{fig:powermodel2}, the optimization problem can be stated as:
 \begin{align}
-\textit{minimize} \quad \sum_{j=1}^{m} \left[
-P_1+\sum_{i=1}^{n}\frac{w_{i,j}(P_2-P_1)}{t_{max}}-\frac{(1-x_j)\gamma}{2}-\frac{(1-y_j)\gamma}{2}
+\textit{maximize} \quad \sum_{j=1}^{m} \left[
+x_j+y_j
 \right]
 \end{align}
 subject to the following constraints:
@@ -117,10 +126,46 @@ savings possible using Low-Carb. Deployment to large operator
 networks would require approximation algorithms. In this paper, we present two heuristics to solve the problem approximately and compare the results with the optimal solution.
 
 \subsubsection{Heuristic 1}
-\label{subsubsec:heuristic1} We describe here, the first heuristic for the two-step Low-Carb problem. Our first heuristic divides the set of BTSs $B$, into two disjoint subsets $B_1$ and $B_2$. Subset $B_1$ consists of those BTSs that have traffic above threshold $delta$. Subset $B_2$ consists of all other BTSs. Our heuristic shuffles the members of $B_1$ and iterates over the set. In every iteration, our heuristic looks at the current traffic load at a particular BTS. Let this traffic load be $h$. The heuristic declares that it must hand-off $h$-$delta$ calls away from the current BTS to it's neighbors in the subset $B_2$ while ensuring that no BTS in $B_2$ leaves it's subset as a result of the hand-off. This heuristic can be invoked multiple times, using a different shuffled order of BTSs in $B_2$ to improve the heuristic's performance. At the end of this process, members of $B_2$ are placed in low-power mode. 
+\label{subsubsec:heuristic1} We describe here, the first heuristic for the two-step Low-Carb problem. The pseudo-code for the algorithm is given in Algorithm~\ref{algo:heur1}. On lines 1 and 2, our heuristic divides the set of BTSs ($B$) into two disjoint subsets $B_1$ and $B_2$. Subset $B_1$ consists of those BTSs that have traffic above threshold $delta$. Subset $B_2$ consists of all other BTSs. On line number 3, our heuristic shuffles the members of $B_1$ and then iterates over the set on lines 4 through 24. In every iteration, our heuristic computes the current load on a particular BTS, thereby determining the minimum number of calls to be handed-off from that BTS to enable power-saving mode at it (line number 5). The heuristic then iterates over the calls mapped to that BTS and for each such call, tries to identify a BTS in $B_2$ that this call may be handed off to. This heuristic can be invoked multiple times, using a different shuffled order of BTSs in $B_2$ to potentially improve the heuristic's performance. At the end of this process, members of $B_2$ are placed in low-power mode. 
 
 
 For the three-step Low-Carb problem, members of $B_1$ are those BTSs that have traffic above threshold $delta_2$, while $B_2$ contains all other BTSs. We shuffle some calls from BTSs selected in a random order attempting to reduce the cardinality of set $B_1$. Once we are done iterating over all members of $B_1$, we re-initialize $B_1$ to contain BTSs that have traffic above threshold $delta_1$ and $B_2$ to contain all other BTSs and repeat the same call hand-off process as described earlier. In the end, those BTSs that have traffic above $\delta_1$ but below $\delta_2$ are placed in the medium-power mode while those with traffic below the $\delta_1$ threshold are palced in the low-power mode. Once again, this heuristic can be invoked multiple times to improve the probability of finding a near-optimal solution.
+
+\IncMargin{1em}
+\LinesNumbered
+\begin{algorithm}[H]
+\SetKwData{Left}{left}\SetKwData{This}{this}\SetKwData{Up}{up}
+\SetKwFunction{Union}{Union}\SetKwFunction{FindCompress}{FindCompress}
+\SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+\Input{B (the set of BTSs) =\{$b_1, b_2, ..., b_m$\},\\C (the set of calls) =\{$c_1, c_2, ..., c_n$\},\\W (current call association) =\{$w_{i,j} | 1 \le i \le n, 1 \le j \le m$\},\\A (Adjacency matrix) = \{$a_{i,j}$ = 1 if $c_i$ can be served through $b_j$, 0 otherwise\}}
+\Output{A new and potentially more energy efficient mapping of calls to BTSs}
+ $B_1 = \{b_j | \sum\limits_{i=1}^{n}w_i^j>\delta\}$\;
+ $B_2 = B - B_1$\;
+ $B_1 = $ random\_shuffle($B_1$)\;
+ \ForAll{$b_j \in B_1$}{
+ 	a = $\sum\limits_{i=1}^{n}w_i^j - \delta$\;
+ 	d = 1\;
+ 	shuffled = 0\;
+ 	\While{$d < n$ AND shuffled $\le a$}{
+ 		\If{$w_d^j=1$}{
+ 			e = 1\;
+ 			mapped = 0\;
+ 			\While{$e \le m$ AND mapped = 0}{
+ 				\If{$e \in B_2$ AND $a_{d,e}=1$}{ 	
+ 					$w_k^l = 1$\;
+ 					$w_k^j = 0$\;
+ 					shuffled = shuffled+1\;
+ 				}
+ 				e = e + 1\;
+ 			}
+ 		d = d + 1\;
+ 	}
+ 	}
+ }
+\label{algo:heur1} 
+\caption{Energy-saving heuristic 1}
+\end{algorithm}
+\DecMargin{1em}
 
 \subsubsection{Heuristic 2}
 \label{subsubsec:heuristic2} We first describe the second heuristic for the two-step Low-Carb problem. In contrast to the first heuristic, the second one iterates over calls first. It first assigns all calls that only have one candidate BTS to the only BTS that can handle them.

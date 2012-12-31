@@ -84,7 +84,7 @@ coordinated effort at the network level.
 \end{figure}
 
 
-Let us illustrate the main idea behind the energy-saving approach proposed in this paper with the help of the illustration in Figure~\ref{fig:illusgtrationall}. The figure shows three nearby BTSs collectively serving eight active calls. The association of call to the serving BTS is indicated by means of a dashed line, while the boundary of the potential service area of a BTS is indicated by means of a dashed circle around it. Be default, each call is served by the BTS from which the mobile station receives the strongest signal. In this example, we assume that the call handling capacity of each BTS is six simultaneous calls. Furthermore, we assume that the power-saving threshold is three calls, i.e., if a BTS is serving less than three calls, it may be put into power-saving mode. In Figure~\ref{fig:illustrationall}, a BTS in it's default configuration, i.e., all TRXs enabled is indicated with a solid bar next to the BTS symbol. Meanwhile, a BTS in power-saving mode is shown by a half-filled bar next to the BTS symbol.
+Let us illustrate the main idea behind the energy-saving approach proposed in this paper with the help of the illustration in Figure~\ref{fig:illustrationall}. The figure shows three nearby BTSs collectively serving eight active calls. The association of call to the serving BTS is indicated by means of a dashed line, while the boundary of the potential service area of a BTS is indicated by means of a dashed circle around it. Be default, each call is served by the BTS from which the mobile station receives the strongest signal. In this example, we assume that the call handling capacity of each BTS is six simultaneous calls. Furthermore, we assume that the power-saving threshold is three calls, i.e., if a BTS is serving less than three calls, it may be put into power-saving mode. In Figure~\ref{fig:illustrationall}, a BTS in it's default configuration, i.e., all TRXs enabled is indicated with a solid bar next to the BTS symbol. Meanwhile, a BTS in power-saving mode is shown by a half-filled bar next to the BTS symbol.
 
 
 In Figure~\ref{fig:illustrationall} note that calls 1 through 6 may only be served through one BTS, while call 7 may be served either by BTS A or C and call 8 may be served either by BTS B or C. Figure~\ref{fig:illustrationall} (a) shows the default deployment where the default call routing and no power-saving is used. Since BTS C is serving only two calls, it may be placed in power-saving mode. Figure~\ref{fig:illustrationall} (b) shows this state, which indicates the current practice in operational cellular networks, whereby BTS C is put into power-saving mode because it's current call volume is below the power-saving threshold. However, this is not the optimal call routing strategy in terms of energy-savings. We may handoff calls 7 and 8 to BTS C, thereby reducing the call volume at both BTS A and B below the power-saving threshold. This results in the energy-optimal call routing strategy, proposed in this paper, shown in Figure~\ref{fig:illustrationall} (c). 
@@ -124,19 +124,7 @@ serving BTS. This fact alone, however, would not result in additional energy sav
 
 We formulate an optimization problem to minimize the power
 consumption in a GSM network by shuffling active calls between
-nearby BTSs while keeping in check the MS uplink budget. Our
-work is very similar in spirit to the concept of
-\textit{frequency dimming}
-in~\cite{Tipper:Dimming:Globecom:2010} albeit at a different
-level of abstraction. A similar approach is also proposed
-in~\cite{Blume:2010:BLTJ:CellularPower} with some rough
-estimates of expected savings. We, on the other hand, use site
-locations and traffic traces from a large cellular network with
-more than 13 million subscribers to run a simulation study
-assessing the benefits of dynamic equipment scaling coupled
-with call hand-offs. A key benefit of our approach is that it 
-does not require any additional hardware
-and works within the GSM specifications.
+nearby BTSs while keeping in check the MS uplink budget and without dropping any active calls. By constraining the uplink budget, we ensure that call voice quality is not adversely affected. 
 
 The rest of the paper is structured as follows. The formulation
 of Low-Carb optimization problem is given in

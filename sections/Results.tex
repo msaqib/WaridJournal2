@@ -1,5 +1,8 @@
 \section{Results}
 \label{sec:results}
+
+\subsection{BTS with two possible power states}
+\label{subsec:results1}
 The following results were obtained through simulation experiments driven by real traffic traces and deployment geography. The experiments perform a combination of activation of BTS power-saving mode on BTSs alongwith a periodic update of serving BTS for each active call, such that the instantaneous energy consumption in the network is minimized.
 
 First, we consider the benefit of BTS power-saving alone, resulting from traffic diversity at each BTS compared to running the network in the default configuration. The percentage reduction in energy consumption is listed in table~\ref{tab:psonly}. The results indicate that a saving of between 4\% and 12\% can be achieved in a network just by activating BTS power savings. We note here that some of these results are in agreement with Ericsson's claim of saving 10-20\% energy by using BTS power-saving on Germany's Vodafone network~\cite{ericssonclaim}. 
@@ -35,10 +38,19 @@ For all three BTS models, we see an almost linear increase in power saving as th
 %\end{figure}
 
 \begin{figure}
+\centering
+\subfigure[]{
 \includegraphics[width=0.45\textwidth]{figures/percent.savings.powersaving.eps}
-\caption{Percent reduction in energy consumption vs re-optimization interval}
 \label{fig:results2}
+}
+\subfigure[]{
+\includegraphics[width=0.45\textwidth]{figures/e.savings.powersaving.eps}
+\label{fig:results4}
+}
+\caption{(a) Percent reduction in energy consumption vs re-optimization interval, (b) Reduction in energy consumption vs re-optimization interval} 
+\label{fig:results24}
 \end{figure}
+
 
 %\begin{figure}
 %\includegraphics[width=0.5\textwidth]{figures/e.savings.powersaving.eps}
@@ -50,15 +62,57 @@ To \textit{compare} the three BTS models in terms of energy saving potential, we
 
 Re-optimizing at an interval less than the mean call duration should offer greater savings than a less frequent re-optimization, because the former regime has the opportunity to optimize more by handing off most of the calls. This is confirmed in our results. For instance, for model 1 BTS, the gain in energy savings going from a 60 minutes inter-optimization interval to 30 minutes gains an energy saving of only 0.0506 kWh per minute, while decreasing the inter-optimization interval from 2 minutes to 1 minute gains 12.5421 kWh. %We notice a more pronounced separation between the three models in Figure~\ref{fig:results4}, resulting from the considerable difference between the maximum and minimum power consumption levels for the three models, as well as the values of $\gamma$.
 
-\begin{figure}
-\includegraphics[width=0.45\textwidth]{figures/e.savings.powersaving.eps}
-\caption{Reduction in energy consumption vs re-optimization interval}
-\label{fig:results4}
-\end{figure}
-
 Let us now interpret what these results mean physically in terms of ecological impact. If we extrapolate our results, the total energy saving for Pakistan are projected to be $60.72$ MWh, $156.84$ MWh and $301.61$ MWh daily, respectively, according to the three BTS models. These savings in energy are significant, especially for small and developing countries. Since network deployments and traffic patterns are similar in different countries, we also expect that similar savings should be achievable in many other countries as well.
 
 In the above extrapolation, we have assumed that the same amount of energy saving would be applicable in rural as well as urban settings. While this may not necessarily be true because the deployments are sparse in rural settings, resulting in reduced potential to save energy by means of call hand-off to neighboring sites, the potential to save energy merely by BTS power-saving should be higher in a rural setting because traffic loads are typically lower.
+
+\subsection{Multi-state BTS}
+\label{subsec:results2}
+In our experimental results discussed so far, we have observed that going from a 6+6+6 configuration to a 2+2+2 configuration can save a significant amount of energy. Intuition suggests that going to a finer granularity of resource pruning should enable greater energy savings. We now present two cases that are different from the configuration considered so far. In the first case, we consider the ability to (de)activate TRXs in pairs, i.e., a site may be in one of three configurations at a given time: 6+6+6, 4+4+4 or 2+2+2. In the second case, we consider the ability to (de)activate each TRX on a site independently, i.e., at a given time, a site may be in one of six possible configurations. 
+
+In this scenario, we conducted simulation experiments where a re-optimization was performed every six minutes using model 1 BTS. The results of these experiments are given in Table~\ref{tab:granularityresults}. For all three BTS models, we see that going from a 2-state model to a 3-state model gives a relatively small increase in energy savings compared to the jump from 3-state to 6-state model.  
+
+\begin{table}
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+Granularity & BTS Model 1 & BTS Model 2 & BTS Model 3\\
+\hline 2-State & 5.38\% & 6.29\% &  14.94\% \\
+\hline 3-State & 6.81\% & 7.73\% &  18.62\% \\
+\hline 6-State & 14.69\% & 25.33\% &  33.69\% \\
+\hline
+\end{tabular}
+\caption{Percentage electricity savings for different granularity of resource pruning}
+\label{tab:granularityresults}
+\end{table}
+
+\subsection{Performance of heuristic algorithms}
+\label{subsec:heur1-results}
+\begin{figure}
+\includegraphics[width=0.5\textwidth]{figures/heuristicerror-touchedup.eps}
+\caption{Empirical CDF of the difference between the cost offered by our heuristic compared to the optimal}
+\label{fig:results5}
+\end{figure}
+
+We also ran experiments for each BTS model in which the electricity cost for the optimal as well as the heuristic algorithms (Algorithm 1 and 2) was computed. We assessed the performance of our heuristics by computing the difference (error) in the electricity cost of the two solutions. For statistical significance, we computed the error in our heuristic relative to the optimal solution over 48 different experiment runs for each BTS model. The resulting CDF of the heuristic error (in Wh) is plotted in Fig.~\ref{fig:results5}. We can see in Fig.~\ref{fig:results5} that our heuristic algorithm 1 is quite close to the optimal solution most of the time, especially for the Model 1 and Model 2 BTS. For Model 3 BTS, although the error is comparatively larger, but since the amount of savings with the optimal solution is quite high (Fig.~\ref{fig:results2}), the heuristic will still result in significant energy savings.  
+
+\subsection{Sensitivity to the value of $\epsilon$}
+\label{subsec:results3}
+If the value of $\epsilon$ in our optimization is set too aggressively, a BTS that is placed in low-power mode may have to be moved back to high-power mode soon afterwards due to short time scale variations in call volume. Theoretically, it is even possible that there may be several such back and forth transitions at a BTS. Such rapid state oscillations may be undesirable and to avoid these, the value of $\epsilon$ must be set at a safe value. Furthermore, if $\epsilon$ is set too aggressively, a BTS placed in low-power mode would be operating very close to it's \textit{new} and lower traffic capacity. If several calls arrive in a short time window, the BSC may not have sufficient time to bring the BTS back into high-power mode and, thus, some calls may be blocked. However, if $\epsilon$ is set too conservatively, the energy savings would be smaller. 
+
+We carried out experiments to assess the impact of the value of $\epsilon$ on the energy savings achievable through RED-BL. For this purpose, we fixed the inter-optimization interval at 6 minutes and carried out RED-BL optimizations for all three BTS models. Furthermore, we considered a two-state BTS model, i.e., a BTS may be placed in either a 6+6+6 or a 2+2+2 configuration. The range of possible values for epsilon were 5, 10, 15 and 25. Since the traffic capacity of a 2+2+2 BTS is 44\footnote{The capacity of the 2+2+2 BTS is 3$\times$2$\times$8 = 48, but 4 channels were reserved by the operator for control and broadcast channels.}, any larger value for $\epsilon$ did not make sense. Figure~\ref{fig:case2:results6} shows the results. As expected, the percentage savings deplete almost linearly with increasing values of $\epsilon$.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{figures/epsilonresults.eps}
+\caption{The percentage energy savings for all three BTS models considered in this paper vs the value of $\epsilon$, with a six minute inter-optimization interval}
+\label{fig:case2:results6}
+\end{figure}
+
+%\subsection{Discussion}
+%\label{subsec:discuss:case2} 
+%Through simulation experiments, we have seen that Low-Carb may cut electricity costs for cellular operators and save large amounts of electrical energy. Low-Carb
+
 %An assumption in the above extrapolation is that the same amount of energy can be saved anywhere in the network. However, traffic patterns and deployment denisty vary in a given network. For instance, cellular networks in rural areas are typically characterized by lower traffic alongwith sparse deployments and, therefore, may not offer as much energy saving possibility as an urban setting (our dataset is for an urban setting). We do not expect that there would be no opportunity for energy savings in rural settings, because of multiple factors. This is partially correct because saving more energy by call-handoff is tough due to sparse deployments. However, the traffic is typically low in such areas, so there should be a greater opportunity to deactivate TRXs most of the time, resulting in greater savings in rural areas than urban. In an extended version of this paper, we will experiment with a dataset from a live network in a rural setting to assess the overall savings possible in a country-wide network.
 
 %\begin{figure}

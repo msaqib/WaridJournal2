@@ -7,6 +7,6 @@ MainFile=waridjournal1.tex
 UseBibTeX=1
 UseMakeIndex=0
 ActiveProfile=LaTeX => PS => PDF
-ProjectLanguage=
-ProjectDialect=
+ProjectLanguage=en
+ProjectDialect=US
 

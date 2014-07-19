@@ -33,19 +33,12 @@ N.~S. Networks, {Flexi BSC (BSC14)}, \url{http://bit.ly/QMD8O5} (June 2011).
 \bibitem{ilyas:lowcarb:globecom13}
 M.~Ilyas, G.~Baig, M.~Qureshi, Q.~Nadeem, A.~Raza, M.~Qazi, B.~Rassool,
   Low-carb: Reducing energy consumption in operational cellular networks, in:
-  Global Communications Conference (GLOBECOM), 2013 IEEE, 2013, pp. 2568--2573.
-\newblock \href {http://dx.doi.org/10.1109/GLOCOM.2013.6831461}
-  {\path{doi:10.1109/GLOCOM.2013.6831461}}.
+  013 IEEE GLOBECOM, 2013, pp. 2568--2573.
 
 \bibitem{Jeyarani:2012:DIA:2148243.2148374}
-R.~Jeyarani, N.~Nagaveni, R.~Vasanth~Ram,
-  \href{http://dx.doi.org/10.1016/j.future.2011.06.002}{Design and
-  implementation of adaptive power-aware virtual machine provisioner (apa-vmp)
-  using swarm intelligence}, Future Gener. Comput. Syst. 28~(5) (2012)
-  811--821.
-\newblock \href {http://dx.doi.org/10.1016/j.future.2011.06.002}
-  {\path{doi:10.1016/j.future.2011.06.002}}.
-\newline\urlprefix\url{http://dx.doi.org/10.1016/j.future.2011.06.002}
+R.~Jeyarani, N.~Nagaveni, R.~Vasanth~Ram, Design and implementation of adaptive
+  power-aware virtual machine provisioner (apa-vmp) using swarm intelligence,
+  Future Gener. Comput. Syst. 28~(5) (2012) 811--821.
 
 \bibitem{serverEnergy}
 Y.~Chen, A.~Das, W.~Qin, A.~Sivasubramaniam, Q.~Wang, N.~Gautam, Managing
@@ -58,8 +51,8 @@ M.~Mazzucco, D.~Dyachuk, R.~Deters, Maximizing cloud providers revenues via
 
 \bibitem{Oh:2011:ECS:2170444.2170458}
 F.~Y.-K. Oh, H.~S. Kim, H.~Eom, H.~Y. Yeom, Enabling consolidation and scaling
-  down to provide power management for cloud computing, USENIX HotCloud, USENIX
-  Association, Berkeley, CA, USA, 2011, pp. 14--14.
+  down to provide power management for cloud computing, USENIX HotCloud, 2011,
+  pp. 14--14.
 
 \bibitem{Chase:2001:MES:502059.502045}
 J.~S. Chase, D.~C. Anderson, P.~N. Thakar, A.~M. Vahdat, R.~P. Doyle, Managing
@@ -67,15 +60,9 @@ J.~S. Chase, D.~C. Anderson, P.~N. Thakar, A.~M. Vahdat, R.~P. Doyle, Managing
   35~(5) (2001) 103--116.
 
 \bibitem{AlDaoud2012745}
-H.~Al-Daoud, I.~Al-Azzoni, D.~G. Down,
-  \href{http://www.sciencedirect.com/science/article/pii/S0167739X11000525}{Power-aware
-  linear programming based scheduling for heterogeneous computer clusters},
-  Future Generation Computer Systems 28~(5) (2012) 745 -- 754,
-  <ce:title>Special Section: Energy efficiency in large-scale distributed
-  systems</ce:title>.
-\newblock \href {http://dx.doi.org/10.1016/j.future.2011.04.001}
-  {\path{doi:10.1016/j.future.2011.04.001}}.
-\newline\urlprefix\url{http://www.sciencedirect.com/science/article/pii/S0167739X11000525}
+H.~Al-Daoud, I.~Al-Azzoni, D.~G. Down, Power-aware linear programming based
+  scheduling for heterogeneous computer clusters, Future Generation Computer
+  Systems 28~(5) (2012) 745 -- 754.
 
 \bibitem{Fang:2011:COP:1995896.1995940}
 Z.~Fang, L.~Zhao, R.~R. Iyer, C.~F. Fajardo, G.~F. Garcia, S.~E. Lee, B.~Li,
@@ -142,11 +129,6 @@ H.~Herodotou, F.~Dong, S.~Babu, No one (cluster) size fits all: automatic
 D.~Aikema, R.~Simmonds, Electrical cost savings and clean energy usage
   potential for hpc workloads, in: Sustainable Systems and Technology (ISSST),
   2011 IEEE International Symposium on, 2011, pp. 1 --6.
-
-\bibitem{Peng:2011:TPS:2030613.2030628}
-C.~Peng, S.-B. Lee, S.~Lu, H.~Luo, H.~Li, {Traffic-driven power saving in
-  operational 3G cellular networks}, in: 17th MobiCom, ACM, New York, NY, USA,
-  2011, pp. 121--132.
 
 \bibitem{Tipper:Dimming:Globecom:2010}
 D.~T.~A. Rezgui, Krishnamurthy, P.~Pacharintanaku, Dimming cellular networks,

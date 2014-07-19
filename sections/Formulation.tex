@@ -12,7 +12,7 @@ power savings} is applied (i.e., when BTS deactivates some TRXs
 moving into low-power mode). Since all TRXs are identical, the
 per call increase in power consumption, and hence the slope of
 the power consumption profile in Fig.~\ref{fig:powermodel1},
-remains the same whether or not some TRXs are deactivated. As
+is independent of the number of active TRXs. As
 also indicated in Fig.~\ref{fig:powermodel1}, the no-load power
 consumption drops to $P_1-\gamma$ in the low-power mode, where
 $\gamma$ is a constant that depends on the equipment type and
@@ -37,16 +37,16 @@ the piecewise linear solid line.
 \label{fig:trafficmodelstats}
 \end{figure}
 
-The BTS equipment may be configurable in more than two-states, depending on the available granularity of TRX deactivation. for instance, a three-state BTS power consumption model is shown in Figure~\ref{fig:powermodel2}. If the traffic is above threshold $\delta_2$, the BTS operates in the default high-power mode. When the traffic drops below threshold $\delta_2$, two TRXs per sector are power-gated, and the BTS enter the medium-power mode (4+4+4 configuration). When the traffic falls below threshold $\delta_1$, two more TRXs are power-gated and the BTS enters the low-power mode. The drop in power consumption for each of the deactivation steps is $\gamma/2$, because compared to Figure~\ref{fig:powermodel1}, half as many TRXs are deactivated in each step.
+The BTS equipment may be configurable in more than two-states, depending on the available granularity of TRX deactivation. for instance, a three-state BTS power consumption model is shown in Figure~\ref{fig:powermodel2}. If the traffic is above threshold $\delta_2$, the BTS operates in the default high-power mode. When the traffic drops below threshold $\delta_2$, two TRXs per sector are deactivated, and the BTS enter the medium-power mode (4+4+4 configuration). When the traffic falls below threshold $\delta_1$, two more TRXs are deactivated and the BTS enters the low-power mode. The drop in power consumption for each of the deactivation steps is $\gamma/2$, because compared to Figure~\ref{fig:powermodel1}, half as many TRXs are deactivated in each step.
 
-The more granular model of Figure~\ref{fig:powermodel2} should offer greater energy savings. If traffic load is $\delta + \epsilon$ then the less granular model of Figure~\ref{fig:powermodel1} does not offer any energy savings but the more granular model ofFigure~\ref{fig:powermodel2} offers an energy saving of $\gamma/2$. The more granular model of Figure~\ref{fig:powermodel2} should, therefore, offer greater energy savings overall. We will show later that this greater energy saving is at the cost of increased complexity of the optimization problem.  
+If traffic load is $\delta + \epsilon$ then the less granular model of Figure~\ref{fig:powermodel1} does not offer any energy savings but the more granular model ofFigure~\ref{fig:powermodel2} offers an energy saving of $\gamma/2$. The more granular model of Figure~\ref{fig:powermodel2} should, therefore, offer greater energy savings overall. We will show later that this greater energy saving is at the cost of increased complexity of the optimization problem.  
 
 \subsection{Multi-BTS Cellular Setting}
 Consider an area with $n$ active callers being served by $m$ BTSs.
 We introduce indicator variable $w_{i,j}$, which is $1$ if call
 $i$ \textit{is being} handled at BTS $j$ and $0$ otherwise. We
 assume availability of an $n\times m$ matrix whose entry
-$c_{i,j}$ is $1$ if caller $i$ \textit{can be} served through
+$c_{i,j}$ is $1$ if call $i$ \textit{can be} served through
 BTS $j$ without exceeding the uplink or downlink budgets.
 This information can be extracted by the data periodically
 transmitted by each MS comprising the received signal strength
@@ -65,7 +65,7 @@ subject to the following constraints:
 \begin{align}
 & \sum_{j=1}^m w_{i,j} = 1 \qquad \forall i \\
 & w_{i,j} \leq c_{i,j} \qquad \forall i, j \\
-& \sum_{i=1}^nw_{i,j}-\delta \leq Mx_j \qquad \forall j%\\
+& \sum_{i=1}^nw_{i,j}-\delta \leq Mx_j \qquad \forall j\\
 & \sum_{i=1}^n w_{i,j} \le t_{max} \qquad \forall i \\
 %\end{align}
 %\begin{align}
@@ -82,7 +82,7 @@ value for the decision variable $x_j$. The fourth constraint is the capacity con
 constraint is the binary value constraint on the decision
 variables.
 
-Note that the first term in the objective function is a constant and may be dropped from the optimization. Similarly, the second term ($\frac{P_2-P_1}{t_{max}}\sum\limits_{j=1}^{m}\sum\limits_{i=1}^{n}w_{i,j}$) is also a constant which equals $\frac{n(P_2-P_1)}{t_{max}}$ because of the first constraint, and hence may be omitted from the optimization. Similarly, multiplication by a scalar does not affect the optimal so $\gamma$ may also be omitted from the optimization. This leaves the objective function as:
+Note that the first term in the objective function is a constant and may be dropped from the optimization. Similarly, the second term is also a constant which equals $\frac{n(P_2-P_1)}{t_{max}}$ because of the first constraint, and hence may be omitted from the optimization. Similarly, multiplication by a scalar does not affect the optimal solution, so $\gamma$ may also be omitted from the optimization. This leaves the objective function as:
 \begin{align}
 \textit{minimize} \quad \sum_{j=1}^{m} -(1-x_j)
 \end{align}
@@ -114,11 +114,11 @@ subject to the following constraints:
 %x_j \in {0,1}
 \end{align}
 
-In the above statement, we've added an indicator variable $y_j$, which is $1$ if BTS $j$ is in medium-power mode, $0$ otherwise. The fourth constraints ensures that $y_j$ takes on the proper value depending on the current traffic volume at BTS $j$. We call this optimization problem the three-step Low-Carb problem.
+In the above formulation, we've added an indicator variable $y_j$, which is $1$ if BTS $j$ is in medium-power mode, $0$ otherwise. The fourth constraints ensures that $y_j$ takes on the proper value depending on the current traffic volume at BTS $j$. We call this optimization problem the three-step Low-Carb problem.
 
 Adding a granularity level introduces $m$ additional binary variables causing the solution space to grow by a factor of $2^m$. At the same time, $O(m)$ constraints are also added to the problem. Binary Integer Programming problems such as ours are NP-Hard. While solutions to small-sized problems may be obtained in a reasonable period of time, but it lacks scalability. Therefore, increasing the number of BTS operating modes causes an exponential increase in the execution time to obtain an optimal solution. 
 
-For ease of modeling and implementation, we assume that all sectors will be configured to have the same number of TRXs active at any given time. Since a typical BTS has a 6+6+6 configuration, we could have upto six possible states 1+1+1, 2+2+2, ..., 6+6+6 for a BTS. To develop the optimization model for a six-state BTS, consider an integer variable $z_j$ which represents the number of TRXs active in each sector of BTS $j$. The power consumption at BTS $j$ may be given by $P_1 + p \sum_{i=1}^{n} w_{i,j} + \gamma z_j$, where p is the slope of the power consumption vs traffic volume curve. The RED-BL optimization problem for the multi-BTS setting in this case is:
+For ease of modeling and implementation, we assume that all sectors will be configured to have the same number of TRXs active at any given time. Thus a 6+6+6 site may have six possible states, 1+1+1, 2+2+2, ..., and 6+6+6. To develop the optimization model for a six-state BTS, consider an integer variable $z_j$ which represents the number of TRXs active in each sector of BTS $j$. The power consumption at BTS $j$ may be given by $P_1 + p \sum_{i=1}^{n} w_{i,j} + \gamma z_j$, where p is the slope of the power consumption vs traffic volume curve. The RED-BL optimization problem for the multi-BTS setting in this case is:
 
 \begin{align}
 \textit{minimize} \quad \sum_{j=1}^{m} z_j

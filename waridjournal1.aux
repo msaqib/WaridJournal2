@@ -13,7 +13,7 @@
 \citation{Peng:2011:BTSSaving:Mobicom}
 \citation{Lorincz:BTS-Measure:Sensors:2012,flexibsc}
 \citation{Peng:2011:BTSSaving:Mobicom}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces A toy example to illustrate the main idea behind Low-Carb. Three BTSs (A, B and C) are shown alongwith eight active calls. The serving BTS for each call is shown using a dashed line. A solid completely filled bar alongside a BTS symbol indicates that it is running in the default configuration where all TRXs are enabled. A BTS in power-saving mode is indicated with a half-filled bar next to it. Assume that power-saving mode may be enabled at a BTS if it has less than three active calls. (a) shows the default configuration where power-saving mode is not used. (b) shows the approach currently used by operators whereby power-saving mode is enabled on a BTS with low-traffic. (c) shows our proposed approach, whereby calls may be handed-off to nearby BTSs, thus maximizing the number of BTSs in power-saving mode.}}{5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces An example to illustrate the main idea behind Low-Carb. Three BTSs (A, B and C) are shown alongwith eight active calls. The serving BTS for each call is shown using arrows. A solid completely filled bar alongside a BTS symbol indicates that it is running in the default configuration whereby all TRXs are enabled. A BTS in power-saving mode is indicated with a half-filled bar next to it. Assume that power-saving mode may be enabled at a BTS if it has upto two active calls. (a) shows the default configuration where power-saving mode is not used. (b) shows the approach currently used by operators whereby power-saving mode is enabled on a BTS with low-traffic. (c) shows our proposed approach, whereby calls may be handed-off to nearby BTSs, thus maximizing the number of BTSs in power-saving mode.}}{5}}
 \newlabel{fig:illustrationall}{{1}{5}}
 \citation{ilyas:lowcarb:globecom13}
 \newlabel{fig:btscdf}{{2(a)}{6}}
@@ -32,7 +32,8 @@
 \citation{Marsan:2010:SAM:1791314.1791340}
 \citation{Cavdar:2011:ECOC}
 \citation{Lee:ServerConsolidation:2011:Globecom,Pinheiro01loadbalancing,Yao:DCPowerReduction:2012:INFOCOM,Herodotou:Starfish:2011:CIDR,Herodotou:2011:NOS:2038916.2038934,Aikema:ElecCostHPC:2011:ISSST}
-\citation{Peng:2011:TPS:2030613.2030628,Peng:2011:BTSSaving:Mobicom}
+\citation{Peng:2011:BTSSaving:Mobicom,Tipper:Dimming:Globecom:2010,Blume:2010:BLTJ:CellularPower}
+\citation{Peng:2011:BTSSaving:Mobicom}
 \citation{Tipper:Dimming:Globecom:2010}
 \citation{Blume:2010:BLTJ:CellularPower}
 \@writefile{toc}{\contentsline {section}{\numberline {2}Related Work}{7}}
@@ -50,15 +51,15 @@
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {}}}{9}}
 \newlabel{fig:trafficmodelstats}{{3}{9}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Multi-BTS Cellular Setting}{9}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Heuristic solutions to Low-Carb}{12}}
-\newlabel{subsec:heuristics}{{3.3}{12}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Heuristic solutions to Low-Carb}{13}}
+\newlabel{subsec:heuristics}{{3.3}{13}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.1}Heuristic 1}{13}}
 \newlabel{subsubsec:heuristic1}{{3.3.1}{13}}
 \@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces Energy-saving heuristic 1}}{14}}
 \newlabel{algo:heur1}{{1}{14}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.2}Heuristic 2}{14}}
-\newlabel{subsubsec:heuristic2}{{3.3.2}{14}}
 \citation{Gerla:1995:MMM:276418.276421}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.2}Heuristic 2}{15}}
+\newlabel{subsubsec:heuristic2}{{3.3.2}{15}}
 \@writefile{toc}{\contentsline {section}{\numberline {4}Experimental Setup}{15}}
 \newlabel{sec:expermintalsetup}{{4}{15}}
 \citation{Chabarek08powerawareness}
@@ -140,14 +141,13 @@
 \bibcite{Herodotou:Starfish:2011:CIDR}{{24}{}{{}}{{}}}
 \bibcite{Herodotou:2011:NOS:2038916.2038934}{{25}{}{{}}{{}}}
 \bibcite{Aikema:ElecCostHPC:2011:ISSST}{{26}{}{{}}{{}}}
-\bibcite{Peng:2011:TPS:2030613.2030628}{{27}{}{{}}{{}}}
-\bibcite{Tipper:Dimming:Globecom:2010}{{28}{}{{}}{{}}}
-\bibcite{Blume:2010:BLTJ:CellularPower}{{29}{}{{}}{{}}}
-\bibcite{Gerla:1995:MMM:276418.276421}{{30}{}{{}}{{}}}
-\bibcite{Chabarek08powerawareness}{{31}{}{{}}{{}}}
-\bibcite{mbakwe:btshybribpower:2011:necec}{{32}{}{{}}{{}}}
-\bibcite{ericssonclaim}{{33}{}{{}}{{}}}
-\bibcite{mobilinksitecount}{{34}{}{{}}{{}}}
-\bibcite{ptaannreport}{{35}{}{{}}{{}}}
-\bibcite{telenorsitecount}{{36}{}{{}}{{}}}
+\bibcite{Tipper:Dimming:Globecom:2010}{{27}{}{{}}{{}}}
+\bibcite{Blume:2010:BLTJ:CellularPower}{{28}{}{{}}{{}}}
+\bibcite{Gerla:1995:MMM:276418.276421}{{29}{}{{}}{{}}}
+\bibcite{Chabarek08powerawareness}{{30}{}{{}}{{}}}
+\bibcite{mbakwe:btshybribpower:2011:necec}{{31}{}{{}}{{}}}
+\bibcite{ericssonclaim}{{32}{}{{}}{{}}}
+\bibcite{mobilinksitecount}{{33}{}{{}}{{}}}
+\bibcite{ptaannreport}{{34}{}{{}}{{}}}
+\bibcite{telenorsitecount}{{35}{}{{}}{{}}}
 \providecommand\NAT@force@numbers{}\NAT@force@numbers

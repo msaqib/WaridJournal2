@@ -1,21 +1,18 @@
 \section{Introduction}
 \label{sec:intro} 
-Cellular networks are quite energy inefficient and consume several tens of TWhs of electrical energy
-every year worldwide~\cite{Oh:Comm:2011}. This is a source of concern not only due to ecological concerns of global warming but also due to rising operational expenditure resulting from rising fuel and electricity prices. 
+Cellular networks are energy inefficient and consume several tens of TWhs of electrical energy
+every year worldwide~\cite{Oh:Comm:2011}. This is a source of concern not only due to ecological concerns of global warming but also due to increasing operational expenditure resulting from rising fuel and electricity prices. 
 
-In the present work, we focus on the second generation (2G) cellular network technology, Global System for Mobile communication (GSM). While most recent research focuses on later generations of cellular networks, we focused on GSM for the several reasons. First, it has a large consumer base. Second, upgrade to later generations of cellular networks is prohibitively expensive especially for operators in the developing world where profits are low due to cut-throat competition and slow return on investment. Our proposed energy efficiency improvement framework is generic and should be applicable to other types of cellular networks as well, but we make no claim to its effectiveness in such scenarios. 
+In the present work, we focus on the second generation (2G) cellular network technology, Global System for Mobile communication (GSM). While most recent research focuses on later generations of cellular networks, we focused on GSM for the several reasons. First, it has a large consumer base. Second, upgrade to later generations of cellular networks is prohibitively expensive especially for operators in the developing world where profits are low due to cut-throat competition and return on investment is slow. Our proposed energy efficiency improvement framework is generic and should be applicable to other types of cellular networks as well, but we make no claim to its effectiveness in such scenarios. 
 
-The major sink of power in a cellular network are Base
-Transceiver Stations (BTSs), accounting for 50\% to 90\% of
-the total power
-consumption~\cite{Louhi:2007:BTSPower:INTELEC,Oh:Comm:2011}. Our focus in the present work is to reduce the energy consumption of BTSs to improve the overall cellular network's energy efficiency.
+Within a GSM network, 50\% to 90\% of electricity consumption is at Base Transceiver Stations (BTSs)~\cite{Louhi:2007:BTSPower:INTELEC,Oh:Comm:2011}. Therefore, to reduce the electricity consumption in GSM networks, we focus on reducing the energy consumption at the BTSs.
 
 In a GSM network, every BTS is equipped with several transceivers (TRXs), each of
 which is allocated a single frequency band for transmission and
 reception of radio signals. Each TRX further uses time
 multiplexing to handle up to 8 full-rate voice calls over its
 assigned frequency band in GSM systems. A typical configuration
-is ``6+6+6'' depicting a BTS serving three \textit{sectors}
+is ``6+6+6'', depicting a BTS serving three \textit{sectors}
 each with six TRXs. Thus, a BTS offers a \textit{fixed} capacity, as
 determined by the total number of TRXs installed. Sites are
 deployed such that this fixed BTS capacity can handle the peak
@@ -64,7 +61,7 @@ citing three reasons:
 \end{itemize}
 
 Our conversations with
-wireless providers reveal that during low traffic periods, they often use a feature available in most vendor's equipment that power-gates TRX circuits at locations that
+mobile network operators (MNOs) reveal that during low traffic periods, they often use a feature available in most vendor's equipment that deactivates TRX circuits at locations that
 serve very few customers. Huawei calls this feature \textit{TRX shutdown} while Ericsson calls it \textit{BTS power saving}. We use the latter term generically in this paper. Since BTS power consumption has a traffic-independent
 component~\cite{Peng:2011:BTSSaving:Mobicom} that depends,
 among other factors, on the number of active TRXs, deactivating
@@ -81,15 +78,15 @@ coordinated effort at the network level.
 
 \begin{figure}
 \includegraphics[width=1\textwidth]{figures/illustrationall.eps}
-\caption{A toy example to illustrate the main idea behind Low-Carb. Three BTSs (A, B and C) are shown alongwith eight active calls. The serving BTS for each call is shown using a dashed line. A solid completely filled bar alongside a BTS symbol indicates that it is running in the default configuration where all TRXs are enabled. A BTS in power-saving mode is indicated with a half-filled bar next to it. Assume that power-saving mode may be enabled at a BTS if it has less than three active calls. (a) shows the default configuration where power-saving mode is not used. (b) shows the approach currently used by operators whereby power-saving mode is enabled on a BTS with low-traffic. (c) shows our proposed approach, whereby calls may be handed-off to nearby BTSs, thus maximizing the number of BTSs in power-saving mode.}
+\caption{An example to illustrate the main idea behind Low-Carb. Three BTSs (A, B and C) are shown alongwith eight active calls. The serving BTS for each call is shown using arrows. A solid completely filled bar alongside a BTS symbol indicates that it is running in the default configuration whereby all TRXs are enabled. A BTS in power-saving mode is indicated with a half-filled bar next to it. Assume that power-saving mode may be enabled at a BTS if it has upto two active calls. (a) shows the default configuration where power-saving mode is not used. (b) shows the approach currently used by operators whereby power-saving mode is enabled on a BTS with low-traffic. (c) shows our proposed approach, whereby calls may be handed-off to nearby BTSs, thus maximizing the number of BTSs in power-saving mode.}
 \label{fig:illustrationall}
 \end{figure}
 
 
-Let us illustrate the main idea behind the energy-saving approach proposed in this paper with the help of the illustration in Figure~\ref{fig:illustrationall}. The figure shows three nearby BTSs collectively serving eight active calls. The association of call to the serving BTS is indicated by means of a dashed line, while the boundary of the potential service area of a BTS is indicated by means of a dashed circle around it. By default, each call is served by the BTS from which the mobile station receives the strongest signal. In this example, we assume that the call handling capacity of each BTS is six simultaneous calls. Furthermore, we assume that the power-saving threshold is three calls, i.e., if a BTS is serving less than three calls, it may be put into power-saving mode. In Figure~\ref{fig:illustrationall}, a BTS in it's default configuration, i.e., all TRXs enabled is indicated with a solid bar next to the BTS symbol. Meanwhile, a BTS in power-saving mode is shown by a half-filled bar next to the BTS symbol.
+Let us illustrate the main idea behind the energy-saving approach proposed in this paper with the help of Figure~\ref{fig:illustrationall}. The figure shows three nearby BTSs collectively serving eight active calls. The association of call to the serving BTS is indicated by means of arrows, while the boundary of the potential service area of a BTS is indicated by means of a dashed circle around it. By default, each call is served by the BTS from which the mobile station receives the strongest signal. In this example, we assume that the call handling capacity of each BTS is six simultaneous calls. Furthermore, we assume that the power-saving threshold is two calls, i.e., if a BTS is serving upto two calls, it may be put into power-saving mode. In Figure~\ref{fig:illustrationall}, a BTS in its default configuration, i.e., all TRXs enabled is indicated with a solid bar next to the BTS symbol. Meanwhile, a BTS in power-saving mode is shown by a half-filled bar next to the BTS symbol.
 
 
-In Figure~\ref{fig:illustrationall}, note that calls 1 through 6 each have only one candidate serving BTS, while call 7 may be served either by BTS A or C and call 8 may be served either by BTS B or C. Figure~\ref{fig:illustrationall} (a) shows the default deployment with default call routing whereas no power-saving is used. Since BTS C is serving only two calls, it may be placed in power-saving mode. Figure~\ref{fig:illustrationall} (b) shows this network state, which indicates the current practice in operational cellular networks, whereby BTS C is put into power-saving mode because it's current call volume is below the power-saving threshold. However, this is not the optimal call routing strategy in terms of energy-savings. We may handoff calls 7 and 8 to BTS C, thereby reducing the call volume at both BTS A and B below the power-saving threshold. This results in the energy-optimal call routing strategy, proposed in this paper, shown in Figure~\ref{fig:illustrationall} (c). 
+In Figure~\ref{fig:illustrationall}, note that calls 1 through 6 each have only one candidate serving BTS, while call 7 may be served either by BTS A or C and call 8 may be served either by BTS B or C. Figure~\ref{fig:illustrationall} (a) shows the default deployment with default call routing whereas no power-saving is used. Since BTS C is serving only two calls, it may be placed in power-saving mode. Figure~\ref{fig:illustrationall} (b) shows this network state, which indicates the current practice in operational cellular networks, whereby BTS C is put into power-saving mode because its current call volume is below the power-saving threshold. However, this is not the optimal call routing strategy in terms of energy-savings. We may handoff calls 7 and 8 to BTS C, thereby reducing the call volume at both BTS A and B below the power-saving threshold. This results in the energy-optimal call routing strategy, proposed in this paper, shown in Figure~\ref{fig:illustrationall} (c). 
 
 
 This paper presents Low-Carb which combines the \textit{BTS
@@ -106,8 +103,8 @@ of TRXs to be deactivated.
 In present day deployments, this is possible since most callers
 receive sufficiently strong signal from several nearby
 BTSs~\cite{Peng:2011:BTSSaving:Mobicom}. Fig.~\ref{fig:btscdf}
-shows coverage diversity evident in the urban data from a large
-cellular provider that we used in our evaluations; one can see
+shows the coverage diversity evident in the urban data, from a large
+cellular provider, that we used in our evaluations; one can see
 that about half of the callers have 3 or more candidates for
 serving BTS. Furthermore, neighboring sites can have different traffic loads at a given time. Fig.~\ref{fig:traffic}, for instance, shows normalized traffic at two neighboring sites in our dataset for a 24 hour period. Thus, some calls may be handed off from busy BTSs to nearby BTSs with lower traffic volume to increase the number of BTSs in power-saving mode.
 
@@ -126,22 +123,22 @@ serving BTS. Furthermore, neighboring sites can have different traffic loads at 
 
 We formulate an optimization problem to minimize the power
 consumption in a GSM network by shuffling active calls between
-nearby BTSs while keeping in check the MS uplink budget and without dropping any active calls. By constraining the uplink budget, we ensure that call quality is not adversely affected. 
+nearby BTSs while keeping in check the MS uplink budget and without dropping any active calls. By constraining the uplink budget, we ensure that service quality is not adversely affected. 
 
 In a shorter version of this paper~\cite{ilyas:lowcarb:globecom13}, we made the following contributions:
 \begin{enumerate}
-\item We formulated, Low-Carb, a mathematical optimization problem to maximize energy savings in a cellular network such that call quality is not compromised. To maximize energy savings, Low-Carb relies on two features that are implemented in typical BTS hardware and are commonly used by cellular operators, albeit in a non-systematic manner.
+\item We formulated Low-Carb, a mathematical optimization problem to maximize energy savings in a cellular network such that call quality is not compromised. To maximize energy savings, Low-Carb relies on two features that are implemented in typical BTS hardware and are commonly used by cellular operators, albeit in an un-coordinated manner.
 \item Since our formulation of Low-Carb is NP-Hard, we provided a heuristic algorithm for solving the Low-Carb problem.
 \item We used real data sets from a large GSM network operator in Pakistan to evaluate Low-Carb's utility.
 \end{enumerate}
 In this paper, we extend our prior work to make the following additional contributions:
 
 \begin{enumerate}
-\item Let $\delta$ be the traffic capacity of the BTS in low-power mode. If the BTS is placed in power-saving mode as soon as the traffic reaches $\delta - 1$ calls, then there may be several oscillations in and out of low-power mode due to short-term traffic variations. During these oscillations, some calls may be blocked as well, which is undesirable. Thus, traffic must be allowed to fall to at least $\delta - \epsilon$ calls before the BTS is put into low-power mode. If we pick a high value for $\epsilon$, the amount of energy savings is expected to drop. We experiment with various values for $\epsilon$ and study the dependence of the amount of energy savings on the value of $\epsilon$.
+\item Let $\delta$ be the traffic capacity of the BTS in low-power mode. A BTS is placed in power-saving mode if its traffic reaches $\delta - \epsilon$ calls. If $\epsilon$ is chosen too high, then the energy savings will be low. On the other hand, if $\epsilon$ is chosen too low, then there may be several oscillations in and out of low-power mode due to short-term traffic variations. Rapid changes between a given pair of states are generally subject to damping because such changes are considered undesirable. We experiment with various values for $\epsilon$ and study the dependence of the amount of energy savings on the value of $\epsilon$.
 \item In~\cite{ilyas:lowcarb:globecom13}, we had considered that a BTS could be put into one of two possible states, namely low-power and high-power mode. In this paper, we consider that a BTS may operate in one of six modes of operation in terms of its power consumption. We show that a higher granularity of number of BTS operational states results in greater energy savings.
 \item We provide another heuristic algorithm for solving Low-Carb which is different from the one presented in the shorter version of this paper.
 \end{enumerate}
-The rest of the paper is structured as follows. The formulation
+The rest of the paper is structured as follows. In section~\ref{sec:related}, we summarize some of the related work. The formulation
 of Low-Carb optimization problem is given in
 section~\ref{sec:formulation}. Experimental setup and the
 results are presented in sections~\ref{sec:expermintalsetup}
